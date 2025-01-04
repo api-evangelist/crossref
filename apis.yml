@@ -47,3 +47,6 @@ maintainers:
   - FN: API Evangelist
     email: info@apievangelist.com
 specificationVersion: '0.16'
+type: Contract
+position: Consuming
+access: 3rd-Party
