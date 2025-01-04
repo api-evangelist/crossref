@@ -8,6 +8,8 @@ apis:
     properties:
       - url: https://www.crossref.org/documentation/
         type: Documentation
+      - type: OpenAPI
+        url: properties/crossref-openapi.yml
     description: >-
       The Crossref REST API is one of a variety of tools and APIs that allow
       anybody to search and reuse our members' metadata in sophisticated ways.
