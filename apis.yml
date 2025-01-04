@@ -4,27 +4,24 @@ apis:
     name: Crossref
     image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     humanURL: https://www.crossref.org/documentation/
-    description: "The Crossref REST API is one of a variety of tools and APIs that
-      allow anybody to search and reuse our members' metadata in sophisticated
-      ways.If you read nothing else, please at least look at the API TIPs
-      document and the \"Etiquette\" section of this document. It will save you
-      (and us) much heartburn. "
+    description: >-
+      The Crossref REST API is one of a variety of tools and APIs that allow
+      anybody to search and reuse our members' metadata in sophisticated ways.
     properties:
       - type: Documentation
         url: https://www.crossref.org/documentation/
 name: Crossref
 tags:
   - Bookmark
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json-icons/swagger-ui-tlbCNBUK.png
-created: 2024-07-02
-modified: 2024-07-02
-description: "The Crossref REST API is one of a variety of tools and APIs that
-  allow anybody to search and reuse our members' metadata in sophisticated
-  ways.If you read nothing else, please at least look at the API TIPs document
-  and the \"Etiquette\" section of this document. It will save you (and us) much
-  heartburn. "
+image: >-
+  https://kinlane-productions2.s3.amazonaws.com/apis-json-icons/swagger-ui-tlbCNBUK.png
+created: '2024-07-02T00:00:00.000Z'
+modified: '2025-01-03'
+description: >-
+  The Crossref REST API is one of a variety of tools and APIs that allow anybody
+  to search and reuse our members' metadata in sophisticated ways.
 maintainers:
   - FN: API Evangelist
     email: info@apievangelist.com
-specificationVersion: "0.16"
+specificationVersion: '0.16'
 aid: crossref
