@@ -1,5 +1,5 @@
 aid: crossref
-url: https://example.com/apis/swagger-ui-tlbCNBUK.yml
+url: https://raw.githubusercontent.com/api-evangelist/crossref/refs/heads/main/apis.yml
 apis:
   - aid: crossref:crossref
     name: Crossref
@@ -30,7 +30,7 @@ tags:
 image: >-
   https://kinlane-productions2.s3.amazonaws.com/apis-json-icons/swagger-ui-tlbCNBUK.png
 created: '2024-07-02T00:00:00.000Z'
-modified: '2025-01-03'
+modified: '2026-03-16'
 description: >-
   Crossref is a non-profit organization that provides a digital infrastructure
   for scholarly communications. They are best known for their DOI (Digital
@@ -44,8 +44,8 @@ description: >-
   in promoting transparency, credibility, and collaboration within the scholarly
   community.
 maintainers:
-  - FN: API Evangelist
-    email: info@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
 specificationVersion: '0.16'
 type: Contract
 position: Consuming
