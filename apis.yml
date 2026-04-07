@@ -1,20 +1,18 @@
 aid: crossref
-url: 
-  https://raw.githubusercontent.com/api-evangelist/crossref/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/crossref/refs/heads/main/apis.yml
 apis:
   - aid: crossref:crossref
     name: Crossref
     tags:
-      - Members
-      - Works
-      - Journals
-      - Prefixes
-      - Funders
-      - Types
-      - Licenses
       - Agency
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Funders
+      - Journals
+      - Licenses
+      - Members
+      - Prefixes
+      - Types
+      - Works
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     humanURL: https://www.crossref.org/documentation/
     properties:
       - url: https://www.crossref.org/documentation/
@@ -26,9 +24,9 @@ apis:
       anybody to search and reuse our members' metadata in sophisticated ways.
 name: Crossref
 tags:
+  - Digital Object Identifier
   - Metadata
   - Scholarly
-  - Digital Object Identifier
 image: >-
   https://kinlane-productions2.s3.amazonaws.com/apis-json-icons/swagger-ui-tlbCNBUK.png
 created: '2024-07-02T00:00:00.000Z'
