@@ -1,0 +1,101 @@
+{
+  "@context": {
+    "@vocab": "https://api.crossref.org/schema/",
+    "schema": "https://schema.org/",
+    "dc": "http://purl.org/dc/terms/",
+    "prism": "http://prismstandard.org/namespaces/basic/2.0/",
+    "fabio": "http://purl.org/spar/fabio/",
+    "frbr": "http://purl.org/vocab/frbr/core#",
+
+    "Work": "fabio:Expression",
+    "Member": "schema:Organization",
+    "Journal": "fabio:Journal",
+    "Funder": "schema:Organization",
+    "Prefix": "schema:Thing",
+    "Type": "schema:Thing",
+    "License": "schema:CreativeWork",
+
+    "DOI": {
+      "@id": "prism:doi",
+      "@type": "@id"
+    },
+    "ISSN": {
+      "@id": "prism:issn"
+    },
+    "ISBN": "schema:isbn",
+    "title": "dc:title",
+    "container-title": "prism:publicationName",
+    "publisher": "schema:publisher",
+    "publisher-location": "schema:address",
+    "abstract": "dc:abstract",
+    "subject": "dc:subject",
+    "type": "dc:type",
+    "URL": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+
+    "author": {
+      "@id": "dc:creator",
+      "@container": "@list"
+    },
+    "editor": {
+      "@id": "schema:editor",
+      "@container": "@list"
+    },
+    "translator": {
+      "@id": "schema:translator",
+      "@container": "@list"
+    },
+    "given": "schema:givenName",
+    "family": "schema:familyName",
+    "ORCID": {
+      "@id": "schema:identifier",
+      "@type": "@id"
+    },
+    "affiliation": {
+      "@id": "schema:affiliation",
+      "@container": "@set"
+    },
+    "ROR": {
+      "@id": "schema:identifier",
+      "@type": "@id"
+    },
+
+    "issued": "dc:issued",
+    "published": "schema:datePublished",
+    "published-print": "prism:publicationDate",
+    "published-online": "schema:datePublished",
+    "created": "dc:created",
+    "deposited": "dc:dateSubmitted",
+    "indexed": "dc:date",
+
+    "volume": "prism:volume",
+    "issue": "prism:number",
+    "page": "prism:pageRange",
+    "article-number": "schema:position",
+
+    "reference": {
+      "@id": "dc:references",
+      "@container": "@set"
+    },
+    "is-referenced-by-count": "schema:citation",
+    "references-count": "schema:citation",
+    "score": "schema:ratingValue",
+
+    "funder": {
+      "@id": "schema:funder",
+      "@container": "@set"
+    },
+    "license": {
+      "@id": "schema:license",
+      "@container": "@set"
+    },
+    "link": "schema:url",
+    "relation": "dc:relation",
+
+    "agency": "schema:Organization",
+    "member": "schema:Organization",
+    "prefix": "schema:identifier"
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/crossref/json-schema/crossref-work-schema.json",
+  "title": "Crossref Work",
+  "description": "Schema for a Crossref Work record returned by /works endpoints, capturing the core scholarly metadata fields.",
+  "type": "object",
+  "required": ["DOI", "type"],
+  "properties": {
+    "DOI": {
+      "type": "string",
+      "description": "Digital Object Identifier of the work.",
+      "pattern": "^10\\."
+    },
+    "URL": {
+      "type": "string",
+      "format": "uri",
+      "description": "Resolvable URL for the DOI."
+    },
+    "type": {
+      "type": "string",
+      "description": "Crossref work type ID such as journal-article, book-chapter, dataset, preprint."
+    },
+    "title": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "subtitle": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "container-title": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "short-container-title": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "publisher": { "type": "string" },
+    "publisher-location": { "type": "string" },
+    "ISSN": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "ISBN": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "issue": { "type": "string" },
+    "volume": { "type": "string" },
+    "page": { "type": "string" },
+    "article-number": { "type": "string" },
+    "abstract": { "type": "string" },
+    "subject": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "author": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Contributor" }
+    },
+    "editor": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Contributor" }
+    },
+    "translator": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Contributor" }
+    },
+    "issued": { "$ref": "#/$defs/PartialDate" },
+    "published": { "$ref": "#/$defs/PartialDate" },
+    "published-print": { "$ref": "#/$defs/PartialDate" },
+    "published-online": { "$ref": "#/$defs/PartialDate" },
+    "created": { "$ref": "#/$defs/Timestamp" },
+    "deposited": { "$ref": "#/$defs/Timestamp" },
+    "indexed": { "$ref": "#/$defs/Timestamp" },
+    "reference-count": { "type": "integer" },
+    "references-count": { "type": "integer" },
+    "is-referenced-by-count": { "type": "integer" },
+    "score": { "type": "number" },
+    "member": { "type": "string" },
+    "prefix": { "type": "string" },
+    "license": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/License" }
+    },
+    "funder": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Funder" }
+    },
+    "link": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/ResourceLink" }
+    },
+    "reference": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Reference" }
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "Contributor": {
+      "type": "object",
+      "properties": {
+        "given": { "type": "string" },
+        "family": { "type": "string" },
+        "name": { "type": "string" },
+        "ORCID": { "type": "string", "format": "uri" },
+        "authenticated-orcid": { "type": "boolean" },
+        "affiliation": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "id": {
+                "type": "array",
+                "items": { "type": "object" }
+              }
+            }
+          }
+        },
+        "sequence": {
+          "type": "string",
+          "enum": ["first", "additional"]
+        }
+      }
+    },
+    "PartialDate": {
+      "type": "object",
+      "properties": {
+        "date-parts": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": { "type": "integer" },
+            "minItems": 1,
+            "maxItems": 3
+          }
+        },
+        "date-time": { "type": "string", "format": "date-time" },
+        "timestamp": { "type": "integer" }
+      }
+    },
+    "Timestamp": {
+      "type": "object",
+      "properties": {
+        "date-parts": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": { "type": "integer" }
+          }
+        },
+        "date-time": { "type": "string", "format": "date-time" },
+        "timestamp": { "type": "integer" }
+      }
+    },
+    "License": {
+      "type": "object",
+      "properties": {
+        "URL": { "type": "string", "format": "uri" },
+        "start": { "$ref": "#/$defs/PartialDate" },
+        "delay-in-days": { "type": "integer" },
+        "content-version": { "type": "string" }
+      }
+    },
+    "Funder": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "DOI": { "type": "string" },
+        "doi-asserted-by": { "type": "string" },
+        "award": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "ResourceLink": {
+      "type": "object",
+      "properties": {
+        "URL": { "type": "string", "format": "uri" },
+        "content-type": { "type": "string" },
+        "content-version": { "type": "string" },
+        "intended-application": { "type": "string" }
+      }
+    },
+    "Reference": {
+      "type": "object",
+      "properties": {
+        "key": { "type": "string" },
+        "DOI": { "type": "string" },
+        "doi-asserted-by": { "type": "string" },
+        "article-title": { "type": "string" },
+        "journal-title": { "type": "string" },
+        "volume": { "type": "string" },
+        "first-page": { "type": "string" },
+        "year": { "type": "string" },
+        "author": { "type": "string" },
+        "unstructured": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+name: Crossref Vocabulary
+description: >-
+  Controlled vocabulary describing the entities, identifiers, and
+  relationships exposed by the Crossref scholarly metadata API.
+url: https://www.crossref.org/documentation/
+version: '1.0'
+modified: '2026-04-28'
+terms:
+  - term: Work
+    description: >-
+      A scholarly content item registered with Crossref, identified by a
+      DOI and described by metadata such as title, authors, publication
+      date, container, and references.
+    relatedTerms:
+      - DOI
+      - Member
+      - Journal
+      - Funder
+  - term: DOI
+    description: >-
+      A Digital Object Identifier registered through Crossref or another
+      DOI registration agency that provides a persistent, resolvable link
+      to a scholarly object.
+    relatedTerms:
+      - Work
+      - Prefix
+      - Agency
+  - term: Member
+    description: >-
+      An organization, typically a publisher or society, that registers
+      content and metadata with Crossref under one or more prefixes.
+    relatedTerms:
+      - Prefix
+      - Work
+  - term: Prefix
+    description: >-
+      The leading numeric component of a DOI (for example 10.1016) that
+      indicates the registering organization. A single Member may control
+      multiple prefixes.
+    relatedTerms:
+      - Member
+      - DOI
+  - term: Journal
+    description: >-
+      A serial publication identified by ISSN(s) that contains scholarly
+      works registered with Crossref.
+    aliases:
+      - Container
+    relatedTerms:
+      - ISSN
+      - Work
+  - term: ISSN
+    description: >-
+      An International Standard Serial Number identifying a journal or
+      other periodical, with separate values for print and electronic
+      versions.
+    relatedTerms:
+      - Journal
+  - term: Funder
+    description: >-
+      An entry in the Crossref Open Funder Registry that identifies an
+      organization that funds research, allowing works to declare their
+      funding sources.
+    relatedTerms:
+      - Work
+      - FunderRegistry
+  - term: Type
+    description: >-
+      A classification of scholarly works such as journal-article,
+      book-chapter, dataset, preprint, or proceedings-article.
+    relatedTerms:
+      - Work
+  - term: License
+    description: >-
+      A license URI declared in a Work's metadata, describing reuse and
+      redistribution permissions for the registered content.
+    relatedTerms:
+      - Work
+  - term: Agency
+    description: >-
+      The DOI registration agency (Crossref, DataCite, mEDRA, etc.) that
+      registered a particular DOI.
+    relatedTerms:
+      - DOI
+  - term: ORCID
+    description: >-
+      An Open Researcher and Contributor ID identifying an author,
+      contributor, or chair on a scholarly work.
+    relatedTerms:
+      - Work
+  - term: ROR
+    description: >-
+      A Research Organization Registry identifier identifying an
+      institution affiliation in a Work's contributor metadata.
+    relatedTerms:
+      - Work
+  - term: Cursor
+    description: >-
+      A continuation token used to deeply paginate large Crossref result
+      sets without offset limits.
+    relatedTerms:
+      - Work

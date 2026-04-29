@@ -1,0 +1,66 @@
+extends: ["spectral:oas"]
+documentationUrl: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+rules:
+  crossref-info-contact:
+    description: API info object should reference Crossref contact.
+    given: "$.info.contact"
+    severity: error
+    then:
+      field: url
+      function: pattern
+      functionOptions:
+        match: "crossref"
+  crossref-required-paths:
+    description: API must define core entity collections used across the platform.
+    given: "$.paths"
+    severity: error
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          required:
+            - /works
+            - /journals
+            - /members
+            - /funders
+            - /types
+            - /licenses
+            - /prefixes
+  crossref-doi-paths:
+    description: API must define lookup paths for individual DOIs and agency.
+    given: "$.paths"
+    severity: error
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          required:
+            - /works/{doi}
+            - /works/{doi}/agency
+  crossref-operation-id:
+    description: All operations must define an operationId.
+    given: "$.paths.*.*"
+    severity: error
+    then:
+      field: operationId
+      function: truthy
+  crossref-tags:
+    description: All operations must define tags.
+    given: "$.paths.*.*"
+    severity: error
+    then:
+      field: tags
+      function: truthy
+  crossref-works-tag:
+    description: Works endpoints should be tagged with Works.
+    given: "$.paths['/works','/works/{doi}'].get.tags"
+    severity: warn
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          contains:
+            const: Works

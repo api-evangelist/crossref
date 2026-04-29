@@ -1,0 +1,127 @@
+name: Crossref REST API Capabilities
+description: >-
+  Workflow capabilities exposed by the Crossref REST API for searching,
+  filtering, and retrieving scholarly metadata about works, journals,
+  members, funders, types, licenses, prefixes, and DOI registration
+  agency.
+url: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+version: '1.0'
+modified: '2026-04-28'
+api: Crossref REST API
+baseURL: https://api.crossref.org
+capabilities:
+  - name: Works Discovery
+    description: >-
+      Search the Crossref corpus of scholarly works using free-form queries,
+      field-specific queries (author, title, container-title, etc.),
+      filters, and faceted counts. Retrieve individual work records by
+      DOI for citation and metadata workflows.
+    operations:
+      - getWorks
+      - getWorkByDoi
+      - getMemberWorks
+      - getJournalWorks
+      - getFunderWorks
+      - getPrefixWorks
+      - getTypeWorks
+    inputs:
+      - query expression
+      - filter expression
+      - DOI
+    outputs:
+      - paginated work records with metadata
+  - name: Member and Publisher Lookup
+    description: >-
+      Look up Crossref member organizations to understand who registered a
+      DOI and which prefixes a publisher controls.
+    operations:
+      - getMembers
+      - getMember
+      - getPrefix
+    inputs:
+      - member ID
+      - DOI prefix
+    outputs:
+      - member metadata
+      - prefix-to-member mapping
+  - name: Journal and Title Browsing
+    description: >-
+      Browse and look up journals registered with Crossref via ISSN to
+      enrich citations and discover container titles.
+    operations:
+      - getJournals
+      - getJournalByIssn
+    inputs:
+      - ISSN
+    outputs:
+      - journal record with publisher and ISSN list
+  - name: Funder Resolution
+    description: >-
+      Resolve funder identifiers to entries in the Open Funder Registry
+      and retrieve their associated works.
+    operations:
+      - getFunders
+      - getFunder
+      - getFunderWorks
+    inputs:
+      - funder DOI
+    outputs:
+      - funder record with name, alt-names, and country
+  - name: Reference Type Enumeration
+    description: >-
+      Retrieve the controlled list of work types used across Crossref
+      metadata, such as journal-article, book-chapter, dataset, and
+      preprint.
+    operations:
+      - getTypes
+      - getType
+      - getTypeWorks
+    inputs:
+      - type ID
+    outputs:
+      - work type definition
+  - name: License and Compliance Inspection
+    description: >-
+      Inspect license metadata associated with Crossref-registered content
+      for open-access discovery, text-mining permissions, and compliance.
+    operations:
+      - getLicenses
+    inputs:
+      - filter expression
+    outputs:
+      - aggregated license URIs and counts
+  - name: DOI Registration Agency Discovery
+    description: >-
+      Determine which DOI registration agency (Crossref, DataCite, mEDRA,
+      etc.) registered a given DOI to route follow-up queries.
+    operations:
+      - getWorkAgency
+    inputs:
+      - DOI
+    outputs:
+      - registration agency name
+useCases:
+  - name: Reference Linking
+    description: Resolve DOIs in a manuscript bibliography to canonical Crossref work records and citation metadata.
+    capabilities:
+      - Works Discovery
+      - DOI Registration Agency Discovery
+  - name: Funder Reporting
+    description: Generate reports of works funded by a specific agency by resolving funder DOI and pulling associated works.
+    capabilities:
+      - Funder Resolution
+      - Works Discovery
+  - name: Open-Access Detection
+    description: Filter works by license URL to identify open-access content for repositories or discovery layers.
+    capabilities:
+      - License and Compliance Inspection
+      - Works Discovery
+  - name: Publisher Analytics
+    description: Aggregate works by Crossref member to surface publication trends and registration statistics.
+    capabilities:
+      - Member and Publisher Lookup
+      - Works Discovery
+  - name: Journal Discovery
+    description: Look up a journal by ISSN to enrich citations with publisher metadata.
+    capabilities:
+      - Journal and Title Browsing

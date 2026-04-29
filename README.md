@@ -1,40 +1,51 @@
 # Crossref (crossref)
-Crossref is a non-profit organization that provides a digital infrastructure for scholarly communications. They are best known for their DOI (Digital Object Identifier) registration service, which allows researchers and publishers to assign unique identifiers to their content, making it easier to cite and locate. Crossref also facilitates the linking of related research articles, ensuring that readers have access to a network of interconnected knowledge. In addition, they offer services for plagiarism detection, metadata enrichment, and reference linking, all aimed at improving the discoverability and accessibility of academic content. Overall, Crossref plays a crucial role in promoting transparency, credibility, and collaboration within the scholarly community.
 
-**URL:** [Visit APIs.json URL](https://example.com/apis/swagger-ui-tlbCNBUK.yml)
+Crossref is a non-profit organization that provides digital infrastructure for scholarly communications. Best known for Digital Object Identifier (DOI) registration, Crossref also operates a public REST API offering searchable, filterable access to metadata for tens of millions of scholarly works, journals, members, funders, prefixes, types, licenses, and DOI registration agency information.
+
+**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/crossref/refs/heads/main/apis.yml)
 
 ## Scope
 
+- **Type:** Index
+- **Position:** Provider
+- **Access:** Public
+- **x-type:** company
 
-## Tags:
+## Tags
 
- - Metadata, Scholarly, Digital Object Identifier
+- Citations, DOI, Funders, Identifiers, Journals, Licenses, Members, Metadata, Open Access, ORCID, Prefixes, Publishers, Reference Linking, ROR, Scholarly
 
 ## Timestamps
 
-- **Created:** 2024-07-02 
-- **Modified:** 2025-01-03 
+- **Created:** 2024-07-02
+- **Modified:** 2026-04-28
 
 ## APIs
 
-### Crossref
-The Crossref REST API is one of a variety of tools and APIs that allow anybody to search and reuse our members' metadata in sophisticated ways.
+### Crossref REST API
 
-**Human URL:** [https://www.crossref.org/documentation/](https://www.crossref.org/documentation/)
+Public, read-only metadata API providing programmatic access to scholarly works, journals, members, funders, types, licenses, prefixes, and DOI registration agency, with query, filter, facet, sort, select, and cursor-based deep paging.
 
+- [Documentation](https://www.crossref.org/documentation/retrieve-metadata/rest-api/)
+- [Swagger UI](https://api.crossref.org/swagger-ui/)
+- [Tips & Etiquette](https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/)
+- [OpenAPI](openapi/crossref-openapi.yml)
+- [Rules](rules/crossref-rules.yml)
+- [Capabilities](capabilities/crossref-capabilities.yml)
+- [Work JSON Schema](json-schema/crossref-work-schema.json)
+- [JSON-LD Context](json-ld/crossref-context.jsonld)
 
-#### Tags:
+## Common Properties
 
- - Members, Works, Journals, Prefixes, Funders, Types, Licenses, Agency
-
-#### Properties
-
+- [Website](https://www.crossref.org/)
 - [Documentation](https://www.crossref.org/documentation/)
-- [OpenAPI](properties/crossref-openapi.yml)
+- [Vocabulary](vocabulary/crossref-vocabulary.yml)
+- [Blog](https://www.crossref.org/blog/)
+- [GitHub](https://github.com/CrossRef)
+- [Status](https://status.crossref.org/)
+- [Community](https://community.crossref.org/)
 
 ## Maintainers
 
-**FN:** API Evangelist
-
-**Email:** info@apievangelist.com
-
+**FN:** Kin Lane
+**Email:** kin@apievangelist.com
