@@ -1,0 +1,13 @@
+{
+  "repo": "crossref",
+  "feeds": [
+    {
+      "source": "https://www.crossref.org/blog/",
+      "feed_url": "https://www.crossref.org//blog/index.xml",
+      "saved": 10,
+      "title": "Blog on Crossref"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:26:32Z"
+}

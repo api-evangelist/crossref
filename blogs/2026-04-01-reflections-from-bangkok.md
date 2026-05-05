@@ -1,0 +1,87 @@
+---
+title: "Reflections from Bangkok"
+url: "https://www.crossref.org/blog/reflections-from-bangkok/"
+date: "Wed, 01 Apr 2026 00:00:00 +0000"
+author: "Amanda Bartell"
+feed_url: "https://www.crossref.org//blog/index.xml"
+---
+<p>Each organization in the global community of Crossref members (that’s currently over 24k organizations in 166 different countries) plays a key role in building the Research Nexus. Any opportunity we have to meet with our members in person is a highlight and a way for us to learn more from each other. The month of January saw three of us travel to Bangkok to attend the first-ever Charleston Conference organised in Asia and to meet with our growing community in Thailand.</p>
+<p>The Charleston Conference is a meeting for librarians and publishers that is held annually in the USA. This year, <a href="https://www.charleston-hub.com/charleston-conference-asia/" target="_blank">the conference</a> was held for the first time in Asia, and attending the event allowed us to connect with the library publishing community from the region and others, who had travelled from around the world to meet in picturesque Bangkok. Half of Crossref members are now based in Asia, so visiting Thailand gave us a great opportunity to meet members and colleagues from the continent in person.</p>
+<p>At the conference, Robbykha moderated a panel discussion on “the importance of metadata for Asian scholarship”, capturing voices from across Asia on how open metadata is being used for discoverability, integrity, and assessment by different scholarly communities in the region.</p>
+<p>Our visit to Bangkok culminated with a one-day Crossref Bangkok event that we had organised to meet with Crossref members in Thailand. We were also able to visit The Thailand National Library, who are the Thai ISSN Centre and stewards of so much of Thailand’s cultural heritage.</p>
+<p>We were very grateful to our colleagues in Thailand for their warm welcome, particularly during the official mourning period for Her Majesty Queen Sirikit The Queen Mother.</p>
+<div style="text-align: center; margin: 10px;">
+<figure><img alt="The photo on the left is of Crossref staff and speakers of the panel discussion moderated by Robbykha at Charleston Asia. The photo on the right is of attendees of Crossref Bangkok event sitting in a banquet style set-up." src="https://www.crossref.org/images/blog/2026/Bangkok-members-discussing-challenges-and-opportunities-for-Thai-scholarship.JPG" width="100%" /><figcaption>
+<p><em>Left hand photo: Madhura Amdekar (Crossref), Guo Xiaofeng (Crossref Ambassador and Crossref sponsors Sin-Chn Scientific Press Pte. Ltd (Singapore)), Robbykha Rosalien (Crossref), Mochammad Tanzil Multazam (Crossref sponsors Relawan Jurnal Indonesia), Prof. Dr. Namtip Wipawin (Sukhothai Thammathirat Open University and Crossref sponsors National Research Council of Thailand), Amanda Bartell (Crossref). Right hand photo: Members discussing challenges and opportunities for Thai scholarship.</em></p>
+</figcaption>
+</figure>
+</div>
+<h2 id="charleston-asia-conference---a-reminder-of-the-importance-of-infrastructure">Charleston Asia conference - a reminder of the importance of infrastructure</h2>
+<p>The three-day Charleston Asia conference gave us a great opportunity to meet with members and colleagues based in Asia, and hear about areas of focus and concern. It was refreshing to hear about the global challenges of access to knowledge, AI, and preserving research integrity, within the context of Asia’s institutional, linguistic, and economic environment. And it was wonderful to hear about so many projects (many at national level) integrating Crossref data to lead their strategies and even shape policy decisions.</p>
+<p>Three inspiring keynotes covered many of the challenges of scholarship in Asia, covering local, national, and regional approaches.</p>
+<p>Distinguished Professor Joyashree Roy (Asian Institute of Technology) presented her work on the Intergovernmental Panel on Climate Change at the United Nations. She highlighted how those in Asia are the most likely to be impacted by climate change, but underrepresented in the research due to structural, linguistic, and financial barriers. She explained how publishers and librarians can remove some of these barriers.</p>
+<p>Professor Devika Madalli (Director of INFLIBNET Centre) talked about the various services that her team has created at a national level in India to reduce country and institution-wide inequalities. INFLIBNET subscribes to Crossref’s Metadata Plus service, and it’s great to see our community’s metadata being part of such useful services.</p>
+<p>Professor Bin Zhang (Library Director, Renmin University of China) talked about the challenges of access to scholarship across different regions in China, and how investment in infrastructure is making a difference here.</p>
+<p>There were many other fascinating sessions during the three days, including our panel discussion, moderated by Robbykha Rosalien.</p>
+<h3 id="the-importance-of-metadata-for-asian-scholarship---our-panel-at-charleston-asia">The importance of metadata for Asian scholarship - our panel at Charleston Asia</h3>
+<p>Metadata isn’t just a technical detail—it’s the backbone of discoverability, credibility, trust, and impact in scholarly communication. In our panel session, we explored metadata trends across Asia and discussed how open metadata is shaping research visibility, integrity, and assessment in the region.
+Our panel brought together diverse voices: Mochammad Tanzil Multazam from Relawan Jurnal Indonesia, Ms. Guo Xiaofeng, Crossref Ambassador in Asia and Director at Sin-Chn Scientific Press (Singapore), and Prof. Dr. Namtip Wipawin from the Department of Information Science, School of Liberal Arts, Sukhothai Thammathirat Open University in Thailand. Each shared experiences of challenges and solutions in adopting open metadata practices and leveraging metadata effectively.</p>
+<div style="text-align: center; margin: 10px;">
+<figure><img alt="Ms. Guo Xiaofeng, Prof. Dr. Namtip Wipawin, and Mochammad Tanzil Multazam on the stage during their panel session" src="https://www.crossref.org/images/blog/2026/Bangkok-panel-session.jpg" width="100%" /><figcaption>
+<p><em>Photo: panel session - Ms. Guo Xiaofeng, Prof. Dr. Namtip Wipawin, Mochammad Tanzil Multazam</em></p>
+</figcaption>
+</figure>
+</div>
+<p>The session opened with Robbykha presenting a striking graph: Crossref now has more than 14,000 members from Asia, representing over half of its global membership. As of January 19th, 2026, there are 13.8 million registered DOI records from Asia. Indonesia leads with 3.02 million registered DOIs, followed by Japan with 2.73 million, India with 2.52 million, South Korea with 1.28 million, and Türkiye rounding out the top five with 793,198. These numbers highlight Asia’s growing role in global scholarly communication.</p>
+<div style="text-align: center; margin: 10px;">
+<figure><img alt="Robbykha presenting a slide to the audience that shows Asian metadata coverage in numbers" src="https://www.crossref.org/images/blog/2026/Bangkok-Robbykha-presenting-the-Asian-metadata-coverage-from-Crossref-data.JPG" width="100%" /><figcaption>
+<p><em>Photo: Robbykha presenting the Asian metadata coverage from Crossref data</em></p>
+</figcaption>
+</figure>
+</div>
+<p>Mochammad Tanzil Multazam shared how government support for persistent identifiers and metadata in Indonesia has fueled one of the largest and fastest‑growing open‑access journal ecosystems worldwide. Of 27,807 national journals, nearly half already register DOIs and metadata records (<a href="https://sinta.kemdiktisaintek.go.id/" target="_blank">SINTA</a>, 13 January 2026). Prof. Dr. Namtip Wipawin provided an overview of the metadata landscape in Thai academia, highlighting both progress and ongoing challenges. Meanwhile, Ms. Guo Xiaofeng presented a case study on open metadata utilization across Asia, showing practical examples of how metadata strengthens discoverability and trust.</p>
+<p>Participants emphasized the importance of metadata for Asian scholarship: enhancing discoverability, accessibility, and providing rich, accurate data. Yet challenges remain. One of the most pressing issues is multilingual content, and the best way to reflect this in the metadata. For our current advice on multilingual metadata, take a look at <a href="https://www.crossref.org/documentation/principles-practices/best-practices/multi-language/" target="_blank">our documentation</a> and this interesting <a href="https://community.crossref.org/t/multi-language-support/3054" target="_blank">discussion on our forum</a>. Our <a href="https://www.crossref.org/working-groups/metadata-advisory/" target="_blank">Metadata Advisory Group</a> currently has a working group of members and metadata users discussing this further, to help ensure our future schema updates help to accurately reflect multilingual metadata.</p>
+<div style="text-align: center; margin: 10px;">
+<figure><img alt="A slide that shows the question “What are the key challenges to adoption of rich metadata in your country/institution” and a word cloud of answers from the panel audience" src="https://www.crossref.org/images/blog/2026/Bangkok-poll-results.jpg" width="100%" /><figcaption>
+<p><em>Poll results from the panel audience on key challenges to the adoption of rich metadata</em></p>
+</figcaption>
+</figure>
+</div>
+<h2 id="crossref-bangkok---a-reminder-of-the-importance-of-visibility">Crossref Bangkok - a reminder of the importance of visibility</h2>
+<p>The day after the Charleston Asia conference, around 75 attendees joined us for our Crossref Bangkok event. The event reinforced how valuable opportunities to interact directly with our members are for learning about the challenges that they face in scholarly publishing and to explore together how those can be overcome. We were supported during the event by our ambassadors Guo Xiaofeng, Amber Osman and Prof. MI Subhani, and by Prof. Dr. Namtip Wipawin and her team, who lead the sponsor organization from National Research Council of Thailand. We were also grateful to Mark Husskison from PKP for attending and helping attendees with some of their knottier OJS questions.</p>
+<p>Most of the event attendees were from universities, which are our existing members in Thailand, and we were also joined by a team from the National Library of Thailand.</p>
+<div style="text-align: center; margin: 10px;">
+<figure><img alt="A group photo of participants at the Crossref Bangkok event" src="https://www.crossref.org/images/blog/2026/Bangkok-Crossref-Bangkok-group-photo.jpg" width="100%" /><figcaption>
+<p><em>Photo: Participants from across Thailand’s research and publishing landscape</em></p>
+</figcaption>
+</figure>
+</div>
+<p>We started the day by hearing more about who was in attendance, where they had travelled from, and what they hoped to get out of the day. We moved on to an introduction to Crossref and DOI metadata records, which provided a refresher on the benefits and obligations of Crossref membership and highlighted the importance of rich metadata for discoverability and research integrity. Next up, we split up into small groups to discuss and share the challenges and opportunities in scholarly publishing in Thailand. From across the discussion groups, there was one word that kept coming up again and again: visibility. Attendees shared how visibility is both a challenge and an opportunity. They appreciate that registering rich metadata records with Crossref - which are then shared with the global scholarly ecosystem - provides them with a way to make their content more visible, but agreed that this isn’t without challenges. Attendees welcomed the in-person meeting, and asked for more training and support from Crossref, particularly in registering content. (We shared details of our regular <a href="https://www.crossref.org/events/_getting-started-at-crossref" target="_blank">“Getting Started at Crossref”</a> webinars for new members, and our regular <a href="https://www.crossref.org/events/metadata-health-check-webinars" target="_blank">“Metadata Health Checks”</a> for longer term members, and we’ll be thinking about how to support members in Asia with more training).</p>
+<p>During the afternoon, we heard more from Prof. Dr. Namtip Wipawin on the importance of metadata for raising the visibility of Thai research. We then ran a practical session, explaining how to add (and update) metadata records for those using our <a href="https://www.crossref.org/documentation/register-maintain-records/metadata-manager/" target="_blank">new Metadata Manager</a>, and those using the <a href="https://www.crossref.org/documentation/register-maintain-records/ojs-plugin/" target="_blank">OJS platform</a>. These were followed by a practical session, with participants exploring their own <a href="https://www.crossref.org/members/prep/" target="_blank">Participation Reports</a>, and discussing how to fill in any gaps in their metadata. The new CSV download for metadata gaps was particularly useful. It was great to support members in adding in their missing references through the OJS platform live, by properly activating the <a href="https://www.crossref.org/documentation/register-maintain-records/ojs-plugin/ojs-3.4/#00164" target="_blank">OJS references plugin</a>.</p>
+<div class="quotecite">
+<blockquote>
+<p>Attending the Crossref Bangkok Workshop made it clear that being a part of Crossref goes far beyond simply assigning DOIs, it is about contributing to a global research community. The sessions highlighted how rich metadata, such as references, abstracts, ORCID iDs, and funding information, play a vital role in making Thai research more visible and accessible worldwide. There was also a strong emphasis on the importance of English metadata and standard identifiers in overcoming language and name-related challenges. Overall, the workshop showed how high-quality metadata can help bring Thai research onto the global stage and strengthen its international recognition.</p>
+</blockquote>
+<p><cite>&ndash; Prof. Dr. Namtip Wipawin on behalf of the National Research Council of Thailand.</cite></p>
+</div>
+<h2 id="visiting-the-national-library-of-thailand---a-reminder-of-the-importance-of-stewardship">Visiting the National Library of Thailand - a reminder of the importance of stewardship</h2>
+<div style="text-align: center; margin: 10px;">
+<figure><img alt="A group photograph of Crossref staff and members of the National Library of Thailand team at the National Library of Thailand" src="https://www.crossref.org/images/blog/2026/Bangkok-warm-welcome-from-National-Library-of-Thailand.jpg" width="100%" /><figcaption>
+<p><em>The warm welcome from National Library of Thailand team: Ms. Thanachcha Suwannavach (Librarian, Practitioner Level), Ms. Thitima Kumkhun (Librarian, Professional Level), Ms. Linda Puechsee (Librarian, Professional Level), Madhura Amdekar (Crossref), Robbykha Rosalien (Crossref), Amanda Bartell (Crossref), Ms. Bubphar Chuchat (Director of the National Library of Thailand), Dr. Prasittichai Lertratanakehakarn (Director of Information Resources Service Group), Ms. Rawiwan Putsorn (Director of Library Research and Development Group), Mrs. Atchara Jaruwan (Director of Information Resources Development Group), Mr. Jung Dippracone (Director of Manuscripts and Inscriptions Group), and Ms. Samachaya Dadrung (Librarian, Professional Level)</em></p>
+</figcaption>
+</figure>
+</div>
+<p>On our final day in Bangkok, we were lucky enough to visit with the team at the National Library of Thailand. They have a key role to play in scholarly publishing in Thailand as they run the National ISSN Centre. They are also stewards of much of Thailand’s cultural heritage, and we were honoured to view some of the artifacts that they look after.</p>
+<div style="text-align: center; margin: 10px;">
+<figure><img alt="Staff of the National Library of Thailand pointing at a screen to show the digitization efforts at the National Library of Thailand" src="https://www.crossref.org/images/blog/2026/Bangkok-staff-showcasing-digitization-efforts-at-National-Library-of-Thailand.jpg" width="100%" /><figcaption>
+<p><em>Staff showcasing the digitization efforts at the National Library of Thailand — preserving knowledge and making it accessible for the future.</em></p>
+</figcaption>
+</figure>
+</div>
+<div class="quotecite">
+<blockquote>
+<p>The role of DOI metadata in enhancing the visibility and accessibility of digital resources is vital. This experience has provided the National Library with a clearer strategic roadmap for establishing a DOI Center dedicated to rare materials and digital ancient manuscripts. This initiative aims to broaden the reach of these invaluable heritage resources, ensuring they are easily discoverable and accessible to a global audience.</p>
+</blockquote>
+<p><cite>&ndash; Ms. Bubphar Chuchat, Director of the National Library of Thailand</cite></p>
+</div>
+<p>Wrapping up our visit, we left the National Library of Thailand feeling inspired. The team’s passion for preserving rare manuscripts while embracing digital tools shows how heritage and innovation can go hand in hand. It was a reminder that stewardship isn’t only about looking after the past; it’s about making sure knowledge and culture continue to thrive for the future.</p>
