@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Crossref — Agency
+  description: 'Crossref — Agency. 1 operations. Lead operation: Agency. Self-contained Naftiko capability covering one Crossref
+    business surface.'
+  tags:
+  - Crossref
+  - Agency
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CROSSREF_API_KEY: CROSSREF_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: crossref-agency
+    baseUri: ''
+    description: Crossref — Agency business capability. Self-contained, no shared references.
+    resources:
+    - name: works-doi-agency
+      path: /works/{doi}/agency
+      operations:
+      - name: get
+        method: GET
+        description: Gets the agency associated with a specific work by its DOI, as an example use DOI 10.5555/12345678
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: doi
+          in: path
+          type: string
+          description: The DOI identifier associated with the work
+          required: true
+  exposes:
+  - type: rest
+    namespace: crossref-agency-rest
+    port: 8080
+    description: REST adapter for Crossref — Agency. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/works/{doi}/agency
+      name: works-doi-agency
+      description: REST surface for works-doi-agency.
+      operations:
+      - method: GET
+        name: get
+        description: Gets the agency associated with a specific work by its DOI, as an example use DOI 10.5555/12345678
+        call: crossref-agency.get
+        with:
+          doi: rest.doi
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: crossref-agency-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Crossref — Agency. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: gets-agency-associated-specific-work
+      description: Gets the agency associated with a specific work by its DOI, as an example use DOI 10.5555/12345678
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: crossref-agency.get
+      with:
+        doi: tools.doi
+      outputParameters:
+      - type: object
+        mapping: $.

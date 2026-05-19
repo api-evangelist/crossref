@@ -1,0 +1,772 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Crossref — Works
+  description: 'Crossref — Works. 8 operations. Lead operation: Works. Self-contained Naftiko capability covering one Crossref
+    business surface.'
+  tags:
+  - Crossref
+  - Works
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CROSSREF_API_KEY: CROSSREF_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: crossref-works
+    baseUri: ''
+    description: Crossref — Works business capability. Self-contained, no shared references.
+    resources:
+    - name: funders-id-works
+      path: /funders/{id}/works
+      operations:
+      - name: get
+        method: GET
+        description: Returns list of works associated with the specified {id}.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: rows
+          in: query
+          type: integer
+          description: The number of rows per page
+        - name: order
+          in: query
+          type: string
+          description: Combined with sort can be used to specify the order of results, e.g. asc or desc
+        - name: facet
+          in: query
+          type: string
+          description: Exposes the ability to retrieve counts for pre-defined facets e.g. `type-name:*` returns counts of
+            all works by type
+        - name: sample
+          in: query
+          type: integer
+          description: Exposes the ability to return `N` randomly sampled items
+        - name: sort
+          in: query
+          type: string
+          description: Exposes the ability to sort results by a certain field, e.g. `score`
+        - name: offset
+          in: query
+          type: integer
+          description: The number of rows to skip before returning
+        - name: mailto
+          in: query
+          type: string
+          description: The email address to identify yourself and be in the "polite pool"
+        - name: select
+          in: query
+          type: string
+          description: Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`
+        - name: query
+          in: query
+          type: string
+          description: Exposes the ability to free text query certain fields
+        - name: filter
+          in: query
+          type: string
+          description: Exposes the ability to filter by certain fields, supports a comma separated list of lucene filters,
+            e.g. `content-domain:psychoceramics.labs.crossref.org`
+        - name: cursor
+          in: query
+          type: string
+          description: Exposes the ability to deep page through large result sets, where offset would cause performance problems
+        - name: id
+          in: path
+          type: string
+          description: The id of the funder
+          required: true
+    - name: journals-issn-works
+      path: /journals/{issn}/works
+      operations:
+      - name: get
+        method: GET
+        description: Returns a list of works in the journal identified by {issn}.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: rows
+          in: query
+          type: integer
+          description: The number of rows per page
+        - name: order
+          in: query
+          type: string
+          description: Combined with sort can be used to specify the order of results, e.g. asc or desc
+        - name: facet
+          in: query
+          type: string
+          description: Exposes the ability to retrieve counts for pre-defined facets e.g. `type-name:*` returns counts of
+            all works by type
+        - name: sample
+          in: query
+          type: integer
+          description: Exposes the ability to return `N` randomly sampled items
+        - name: sort
+          in: query
+          type: string
+          description: Exposes the ability to sort results by a certain field, e.g. `score`
+        - name: offset
+          in: query
+          type: integer
+          description: The number of rows to skip before returning
+        - name: mailto
+          in: query
+          type: string
+          description: The email address to identify yourself and be in the "polite pool"
+        - name: select
+          in: query
+          type: string
+          description: Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`
+        - name: query
+          in: query
+          type: string
+          description: Exposes the ability to free text query certain fields
+        - name: filter
+          in: query
+          type: string
+          description: Exposes the ability to filter by certain fields, supports a comma separated list of lucene filters,
+            e.g. `content-domain:psychoceramics.labs.crossref.org`
+        - name: cursor
+          in: query
+          type: string
+          description: Exposes the ability to deep page through large result sets, where offset would cause performance problems
+        - name: issn
+          in: path
+          type: array
+          description: The ISSN identifier associated with the journal
+          required: true
+    - name: members-id-works
+      path: /members/{id}/works
+      operations:
+      - name: get
+        method: GET
+        description: Returns list of works associated with a Crossref member (deposited by a Crossref member) with {id}.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: rows
+          in: query
+          type: integer
+          description: The number of rows per page
+        - name: order
+          in: query
+          type: string
+          description: Combined with sort can be used to specify the order of results, e.g. asc or desc
+        - name: facet
+          in: query
+          type: string
+          description: Exposes the ability to retrieve counts for pre-defined facets e.g. `type-name:*` returns counts of
+            all works by type
+        - name: sample
+          in: query
+          type: integer
+          description: Exposes the ability to return `N` randomly sampled items
+        - name: sort
+          in: query
+          type: string
+          description: Exposes the ability to sort results by a certain field, e.g. `score`
+        - name: offset
+          in: query
+          type: integer
+          description: The number of rows to skip before returning
+        - name: mailto
+          in: query
+          type: string
+          description: The email address to identify yourself and be in the "polite pool"
+        - name: select
+          in: query
+          type: string
+          description: Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`
+        - name: query
+          in: query
+          type: string
+          description: Exposes the ability to free text query certain fields
+        - name: filter
+          in: query
+          type: string
+          description: Exposes the ability to filter by certain fields, supports a comma separated list of lucene filters,
+            e.g. `content-domain:psychoceramics.labs.crossref.org`
+        - name: cursor
+          in: query
+          type: string
+          description: Exposes the ability to deep page through large result sets, where offset would cause performance problems
+        - name: id
+          in: path
+          type: integer
+          required: true
+    - name: prefixes-prefix-works
+      path: /prefixes/{prefix}/works
+      operations:
+      - name: get
+        method: GET
+        description: Returns list of works associated with specified {prefix}.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: rows
+          in: query
+          type: integer
+          description: The number of rows per page
+        - name: order
+          in: query
+          type: string
+          description: Combined with sort can be used to specify the order of results, e.g. asc or desc
+        - name: facet
+          in: query
+          type: string
+          description: Exposes the ability to retrieve counts for pre-defined facets e.g. `type-name:*` returns counts of
+            all works by type
+        - name: sample
+          in: query
+          type: integer
+          description: Exposes the ability to return `N` randomly sampled items
+        - name: sort
+          in: query
+          type: string
+          description: Exposes the ability to sort results by a certain field, e.g. `score`
+        - name: offset
+          in: query
+          type: integer
+          description: The number of rows to skip before returning
+        - name: mailto
+          in: query
+          type: string
+          description: The email address to identify yourself and be in the "polite pool"
+        - name: select
+          in: query
+          type: string
+          description: Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`
+        - name: query
+          in: query
+          type: string
+          description: Exposes the ability to free text query certain fields
+        - name: filter
+          in: query
+          type: string
+          description: Exposes the ability to filter by certain fields, supports a comma separated list of lucene filters,
+            e.g. `content-domain:psychoceramics.labs.crossref.org`
+        - name: cursor
+          in: query
+          type: string
+          description: Exposes the ability to deep page through large result sets, where offset would cause performance problems
+        - name: prefix
+          in: path
+          type: string
+          required: true
+    - name: types-id-works
+      path: /types/{id}/works
+      operations:
+      - name: get
+        method: GET
+        description: returns list of works of type {id}.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: rows
+          in: query
+          type: integer
+          description: The number of rows per page
+        - name: order
+          in: query
+          type: string
+          description: Combined with sort can be used to specify the order of results, e.g. asc or desc
+        - name: facet
+          in: query
+          type: string
+          description: Exposes the ability to retrieve counts for pre-defined facets e.g. `type-name:*` returns counts of
+            all works by type
+        - name: sample
+          in: query
+          type: integer
+          description: Exposes the ability to return `N` randomly sampled items
+        - name: sort
+          in: query
+          type: string
+          description: Exposes the ability to sort results by a certain field, e.g. `score`
+        - name: offset
+          in: query
+          type: integer
+          description: The number of rows to skip before returning
+        - name: mailto
+          in: query
+          type: string
+          description: The email address to identify yourself and be in the "polite pool"
+        - name: select
+          in: query
+          type: string
+          description: Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`
+        - name: query
+          in: query
+          type: string
+          description: Exposes the ability to free text query certain fields
+        - name: filter
+          in: query
+          type: string
+          description: Exposes the ability to filter by certain fields, supports a comma separated list of lucene filters,
+            e.g. `content-domain:psychoceramics.labs.crossref.org`
+        - name: cursor
+          in: query
+          type: string
+          description: Exposes the ability to deep page through large result sets, where offset would cause performance problems
+        - name: id
+          in: path
+          type: integer
+          required: true
+    - name: works
+      path: /works
+      operations:
+      - name: get
+        method: GET
+        description: Returns a list of all works (journal articles, conference proceedings, books, components, etc), 20 per
+          page.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: rows
+          in: query
+          type: integer
+          description: The number of rows per page
+        - name: order
+          in: query
+          type: string
+          description: Combined with sort can be used to specify the order of results, e.g. asc or desc
+        - name: facet
+          in: query
+          type: string
+          description: Exposes the ability to retrieve counts for pre-defined facets e.g. `type-name:*` returns counts of
+            all works by type
+        - name: sample
+          in: query
+          type: integer
+          description: Exposes the ability to return `N` randomly sampled items
+        - name: sort
+          in: query
+          type: string
+          description: Exposes the ability to sort results by a certain field, e.g. `score`
+        - name: offset
+          in: query
+          type: integer
+          description: The number of rows to skip before returning
+        - name: mailto
+          in: query
+          type: string
+          description: The email address to identify yourself and be in the "polite pool"
+        - name: select
+          in: query
+          type: string
+          description: Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`
+        - name: query
+          in: query
+          type: string
+          description: Exposes the ability to free text query certain fields
+        - name: filter
+          in: query
+          type: string
+          description: Exposes the ability to filter by certain fields, supports a comma separated list of lucene filters,
+            e.g. `content-domain:psychoceramics.labs.crossref.org`
+        - name: cursor
+          in: query
+          type: string
+          description: Exposes the ability to deep page through large result sets, where offset would cause performance problems
+    - name: works-doi
+      path: /works/{doi}
+      operations:
+      - name: get
+        method: GET
+        description: Returns metadata for the specified Crossref DOI, as an example use DOI 10.5555/12345678
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: doi
+          in: path
+          type: string
+          description: The DOI identifier associated with the work
+          required: true
+    - name: works-doi-agency
+      path: /works/{doi}/agency
+      operations:
+      - name: get
+        method: GET
+        description: Gets the agency associated with a specific work by its DOI, as an example use DOI 10.5555/12345678
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: doi
+          in: path
+          type: string
+          description: The DOI identifier associated with the work
+          required: true
+  exposes:
+  - type: rest
+    namespace: crossref-works-rest
+    port: 8080
+    description: REST adapter for Crossref — Works. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/funders/{id}/works
+      name: funders-id-works
+      description: REST surface for funders-id-works.
+      operations:
+      - method: GET
+        name: get
+        description: Returns list of works associated with the specified {id}.
+        call: crossref-works.get
+        with:
+          rows: rest.rows
+          order: rest.order
+          facet: rest.facet
+          sample: rest.sample
+          sort: rest.sort
+          offset: rest.offset
+          mailto: rest.mailto
+          select: rest.select
+          query: rest.query
+          filter: rest.filter
+          cursor: rest.cursor
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/journals/{issn}/works
+      name: journals-issn-works
+      description: REST surface for journals-issn-works.
+      operations:
+      - method: GET
+        name: get
+        description: Returns a list of works in the journal identified by {issn}.
+        call: crossref-works.get
+        with:
+          rows: rest.rows
+          order: rest.order
+          facet: rest.facet
+          sample: rest.sample
+          sort: rest.sort
+          offset: rest.offset
+          mailto: rest.mailto
+          select: rest.select
+          query: rest.query
+          filter: rest.filter
+          cursor: rest.cursor
+          issn: rest.issn
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/members/{id}/works
+      name: members-id-works
+      description: REST surface for members-id-works.
+      operations:
+      - method: GET
+        name: get
+        description: Returns list of works associated with a Crossref member (deposited by a Crossref member) with {id}.
+        call: crossref-works.get
+        with:
+          rows: rest.rows
+          order: rest.order
+          facet: rest.facet
+          sample: rest.sample
+          sort: rest.sort
+          offset: rest.offset
+          mailto: rest.mailto
+          select: rest.select
+          query: rest.query
+          filter: rest.filter
+          cursor: rest.cursor
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/prefixes/{prefix}/works
+      name: prefixes-prefix-works
+      description: REST surface for prefixes-prefix-works.
+      operations:
+      - method: GET
+        name: get
+        description: Returns list of works associated with specified {prefix}.
+        call: crossref-works.get
+        with:
+          rows: rest.rows
+          order: rest.order
+          facet: rest.facet
+          sample: rest.sample
+          sort: rest.sort
+          offset: rest.offset
+          mailto: rest.mailto
+          select: rest.select
+          query: rest.query
+          filter: rest.filter
+          cursor: rest.cursor
+          prefix: rest.prefix
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/types/{id}/works
+      name: types-id-works
+      description: REST surface for types-id-works.
+      operations:
+      - method: GET
+        name: get
+        description: returns list of works of type {id}.
+        call: crossref-works.get
+        with:
+          rows: rest.rows
+          order: rest.order
+          facet: rest.facet
+          sample: rest.sample
+          sort: rest.sort
+          offset: rest.offset
+          mailto: rest.mailto
+          select: rest.select
+          query: rest.query
+          filter: rest.filter
+          cursor: rest.cursor
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/works
+      name: works
+      description: REST surface for works.
+      operations:
+      - method: GET
+        name: get
+        description: Returns a list of all works (journal articles, conference proceedings, books, components, etc), 20 per
+          page.
+        call: crossref-works.get
+        with:
+          rows: rest.rows
+          order: rest.order
+          facet: rest.facet
+          sample: rest.sample
+          sort: rest.sort
+          offset: rest.offset
+          mailto: rest.mailto
+          select: rest.select
+          query: rest.query
+          filter: rest.filter
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/works/{doi}
+      name: works-doi
+      description: REST surface for works-doi.
+      operations:
+      - method: GET
+        name: get
+        description: Returns metadata for the specified Crossref DOI, as an example use DOI 10.5555/12345678
+        call: crossref-works.get
+        with:
+          doi: rest.doi
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/works/{doi}/agency
+      name: works-doi-agency
+      description: REST surface for works-doi-agency.
+      operations:
+      - method: GET
+        name: get
+        description: Gets the agency associated with a specific work by its DOI, as an example use DOI 10.5555/12345678
+        call: crossref-works.get
+        with:
+          doi: rest.doi
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: crossref-works-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Crossref — Works. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: returns-list-works-associated-specified
+      description: Returns list of works associated with the specified {id}.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: crossref-works.get
+      with:
+        rows: tools.rows
+        order: tools.order
+        facet: tools.facet
+        sample: tools.sample
+        sort: tools.sort
+        offset: tools.offset
+        mailto: tools.mailto
+        select: tools.select
+        query: tools.query
+        filter: tools.filter
+        cursor: tools.cursor
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-list-works-journal-identified
+      description: Returns a list of works in the journal identified by {issn}.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: crossref-works.get
+      with:
+        rows: tools.rows
+        order: tools.order
+        facet: tools.facet
+        sample: tools.sample
+        sort: tools.sort
+        offset: tools.offset
+        mailto: tools.mailto
+        select: tools.select
+        query: tools.query
+        filter: tools.filter
+        cursor: tools.cursor
+        issn: tools.issn
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-list-works-associated-crossref
+      description: Returns list of works associated with a Crossref member (deposited by a Crossref member) with {id}.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: crossref-works.get
+      with:
+        rows: tools.rows
+        order: tools.order
+        facet: tools.facet
+        sample: tools.sample
+        sort: tools.sort
+        offset: tools.offset
+        mailto: tools.mailto
+        select: tools.select
+        query: tools.query
+        filter: tools.filter
+        cursor: tools.cursor
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-list-works-associated-specified-2
+      description: Returns list of works associated with specified {prefix}.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: crossref-works.get
+      with:
+        rows: tools.rows
+        order: tools.order
+        facet: tools.facet
+        sample: tools.sample
+        sort: tools.sort
+        offset: tools.offset
+        mailto: tools.mailto
+        select: tools.select
+        query: tools.query
+        filter: tools.filter
+        cursor: tools.cursor
+        prefix: tools.prefix
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-list-works-type-id
+      description: returns list of works of type {id}.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: crossref-works.get
+      with:
+        rows: tools.rows
+        order: tools.order
+        facet: tools.facet
+        sample: tools.sample
+        sort: tools.sort
+        offset: tools.offset
+        mailto: tools.mailto
+        select: tools.select
+        query: tools.query
+        filter: tools.filter
+        cursor: tools.cursor
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-list-all-works-journal
+      description: Returns a list of all works (journal articles, conference proceedings, books, components, etc), 20 per
+        page.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: crossref-works.get
+      with:
+        rows: tools.rows
+        order: tools.order
+        facet: tools.facet
+        sample: tools.sample
+        sort: tools.sort
+        offset: tools.offset
+        mailto: tools.mailto
+        select: tools.select
+        query: tools.query
+        filter: tools.filter
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-metadata-specified-crossref-doi
+      description: Returns metadata for the specified Crossref DOI, as an example use DOI 10.5555/12345678
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: crossref-works.get
+      with:
+        doi: tools.doi
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gets-agency-associated-specific-work
+      description: Gets the agency associated with a specific work by its DOI, as an example use DOI 10.5555/12345678
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: crossref-works.get
+      with:
+        doi: tools.doi
+      outputParameters:
+      - type: object
+        mapping: $.

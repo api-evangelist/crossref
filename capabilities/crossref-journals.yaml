@@ -1,0 +1,252 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Crossref — Journals
+  description: 'Crossref — Journals. 3 operations. Lead operation: Journals. Self-contained Naftiko capability covering one
+    Crossref business surface.'
+  tags:
+  - Crossref
+  - Journals
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CROSSREF_API_KEY: CROSSREF_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: crossref-journals
+    baseUri: ''
+    description: Crossref — Journals business capability. Self-contained, no shared references.
+    resources:
+    - name: journals
+      path: /journals
+      operations:
+      - name: get
+        method: GET
+        description: Return a list of journals in the Crossref database.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: cursor
+          in: query
+          type: string
+          description: Exposes the ability to deep page through large result sets, where offset would cause performance problems
+        - name: query
+          in: query
+          type: string
+          description: Exposes the ability to free text query certain fields
+        - name: rows
+          in: query
+          type: integer
+          description: The number of rows per page
+        - name: mailto
+          in: query
+          type: string
+          description: The email address to identify yourself and be in the "polite pool"
+        - name: offset
+          in: query
+          type: integer
+          description: The number of rows to skip before returning
+    - name: journals-issn
+      path: /journals/{issn}
+      operations:
+      - name: get
+        method: GET
+        description: Returns information about a journal with the given ISSN, as an example use ISSN 03064530
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: issn
+          in: path
+          type: array
+          description: The ISSN identifier associated with the journal
+          required: true
+    - name: journals-issn-works
+      path: /journals/{issn}/works
+      operations:
+      - name: get
+        method: GET
+        description: Returns a list of works in the journal identified by {issn}.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: rows
+          in: query
+          type: integer
+          description: The number of rows per page
+        - name: order
+          in: query
+          type: string
+          description: Combined with sort can be used to specify the order of results, e.g. asc or desc
+        - name: facet
+          in: query
+          type: string
+          description: Exposes the ability to retrieve counts for pre-defined facets e.g. `type-name:*` returns counts of
+            all works by type
+        - name: sample
+          in: query
+          type: integer
+          description: Exposes the ability to return `N` randomly sampled items
+        - name: sort
+          in: query
+          type: string
+          description: Exposes the ability to sort results by a certain field, e.g. `score`
+        - name: offset
+          in: query
+          type: integer
+          description: The number of rows to skip before returning
+        - name: mailto
+          in: query
+          type: string
+          description: The email address to identify yourself and be in the "polite pool"
+        - name: select
+          in: query
+          type: string
+          description: Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`
+        - name: query
+          in: query
+          type: string
+          description: Exposes the ability to free text query certain fields
+        - name: filter
+          in: query
+          type: string
+          description: Exposes the ability to filter by certain fields, supports a comma separated list of lucene filters,
+            e.g. `content-domain:psychoceramics.labs.crossref.org`
+        - name: cursor
+          in: query
+          type: string
+          description: Exposes the ability to deep page through large result sets, where offset would cause performance problems
+        - name: issn
+          in: path
+          type: array
+          description: The ISSN identifier associated with the journal
+          required: true
+  exposes:
+  - type: rest
+    namespace: crossref-journals-rest
+    port: 8080
+    description: REST adapter for Crossref — Journals. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/journals
+      name: journals
+      description: REST surface for journals.
+      operations:
+      - method: GET
+        name: get
+        description: Return a list of journals in the Crossref database.
+        call: crossref-journals.get
+        with:
+          cursor: rest.cursor
+          query: rest.query
+          rows: rest.rows
+          mailto: rest.mailto
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/journals/{issn}
+      name: journals-issn
+      description: REST surface for journals-issn.
+      operations:
+      - method: GET
+        name: get
+        description: Returns information about a journal with the given ISSN, as an example use ISSN 03064530
+        call: crossref-journals.get
+        with:
+          issn: rest.issn
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/journals/{issn}/works
+      name: journals-issn-works
+      description: REST surface for journals-issn-works.
+      operations:
+      - method: GET
+        name: get
+        description: Returns a list of works in the journal identified by {issn}.
+        call: crossref-journals.get
+        with:
+          rows: rest.rows
+          order: rest.order
+          facet: rest.facet
+          sample: rest.sample
+          sort: rest.sort
+          offset: rest.offset
+          mailto: rest.mailto
+          select: rest.select
+          query: rest.query
+          filter: rest.filter
+          cursor: rest.cursor
+          issn: rest.issn
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: crossref-journals-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Crossref — Journals. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: return-list-journals-crossref-database
+      description: Return a list of journals in the Crossref database.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: crossref-journals.get
+      with:
+        cursor: tools.cursor
+        query: tools.query
+        rows: tools.rows
+        mailto: tools.mailto
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-information-about-journal-given
+      description: Returns information about a journal with the given ISSN, as an example use ISSN 03064530
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: crossref-journals.get
+      with:
+        issn: tools.issn
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-list-works-journal-identified
+      description: Returns a list of works in the journal identified by {issn}.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: crossref-journals.get
+      with:
+        rows: tools.rows
+        order: tools.order
+        facet: tools.facet
+        sample: tools.sample
+        sort: tools.sort
+        offset: tools.offset
+        mailto: tools.mailto
+        select: tools.select
+        query: tools.query
+        filter: tools.filter
+        cursor: tools.cursor
+        issn: tools.issn
+      outputParameters:
+      - type: object
+        mapping: $.

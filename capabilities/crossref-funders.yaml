@@ -1,0 +1,258 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Crossref — Funders
+  description: 'Crossref — Funders. 3 operations. Lead operation: Funders. Self-contained Naftiko capability covering one
+    Crossref business surface.'
+  tags:
+  - Crossref
+  - Funders
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CROSSREF_API_KEY: CROSSREF_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: crossref-funders
+    baseUri: ''
+    description: Crossref — Funders business capability. Self-contained, no shared references.
+    resources:
+    - name: funders
+      path: /funders
+      operations:
+      - name: get
+        method: GET
+        description: Returns a list of all funders in the [Funder Registry](https://gitlab.com/crossref/open_funder_registry).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter
+          in: query
+          type: string
+          description: Exposes the ability to search funders by location using a Lucene based syntax
+        - name: cursor
+          in: query
+          type: string
+          description: Exposes the ability to deep page through large result sets, where offset would cause performance problems
+        - name: query
+          in: query
+          type: string
+          description: Exposes the ability to free text query certain fields
+        - name: rows
+          in: query
+          type: integer
+          description: The number of rows per page
+        - name: mailto
+          in: query
+          type: string
+          description: The email address to identify yourself and be in the "polite pool"
+        - name: offset
+          in: query
+          type: integer
+          description: The number of rows to skip before returning
+    - name: funders-id
+      path: /funders/{id}
+      operations:
+      - name: get
+        method: GET
+        description: Returns metadata for specified funder **and** its suborganizations, as an example use id 501100006004
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The id of the funder
+          required: true
+    - name: funders-id-works
+      path: /funders/{id}/works
+      operations:
+      - name: get
+        method: GET
+        description: Returns list of works associated with the specified {id}.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: rows
+          in: query
+          type: integer
+          description: The number of rows per page
+        - name: order
+          in: query
+          type: string
+          description: Combined with sort can be used to specify the order of results, e.g. asc or desc
+        - name: facet
+          in: query
+          type: string
+          description: Exposes the ability to retrieve counts for pre-defined facets e.g. `type-name:*` returns counts of
+            all works by type
+        - name: sample
+          in: query
+          type: integer
+          description: Exposes the ability to return `N` randomly sampled items
+        - name: sort
+          in: query
+          type: string
+          description: Exposes the ability to sort results by a certain field, e.g. `score`
+        - name: offset
+          in: query
+          type: integer
+          description: The number of rows to skip before returning
+        - name: mailto
+          in: query
+          type: string
+          description: The email address to identify yourself and be in the "polite pool"
+        - name: select
+          in: query
+          type: string
+          description: Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`
+        - name: query
+          in: query
+          type: string
+          description: Exposes the ability to free text query certain fields
+        - name: filter
+          in: query
+          type: string
+          description: Exposes the ability to filter by certain fields, supports a comma separated list of lucene filters,
+            e.g. `content-domain:psychoceramics.labs.crossref.org`
+        - name: cursor
+          in: query
+          type: string
+          description: Exposes the ability to deep page through large result sets, where offset would cause performance problems
+        - name: id
+          in: path
+          type: string
+          description: The id of the funder
+          required: true
+  exposes:
+  - type: rest
+    namespace: crossref-funders-rest
+    port: 8080
+    description: REST adapter for Crossref — Funders. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/funders
+      name: funders
+      description: REST surface for funders.
+      operations:
+      - method: GET
+        name: get
+        description: Returns a list of all funders in the [Funder Registry](https://gitlab.com/crossref/open_funder_registry).
+        call: crossref-funders.get
+        with:
+          filter: rest.filter
+          cursor: rest.cursor
+          query: rest.query
+          rows: rest.rows
+          mailto: rest.mailto
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/funders/{id}
+      name: funders-id
+      description: REST surface for funders-id.
+      operations:
+      - method: GET
+        name: get
+        description: Returns metadata for specified funder **and** its suborganizations, as an example use id 501100006004
+        call: crossref-funders.get
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/funders/{id}/works
+      name: funders-id-works
+      description: REST surface for funders-id-works.
+      operations:
+      - method: GET
+        name: get
+        description: Returns list of works associated with the specified {id}.
+        call: crossref-funders.get
+        with:
+          rows: rest.rows
+          order: rest.order
+          facet: rest.facet
+          sample: rest.sample
+          sort: rest.sort
+          offset: rest.offset
+          mailto: rest.mailto
+          select: rest.select
+          query: rest.query
+          filter: rest.filter
+          cursor: rest.cursor
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: crossref-funders-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Crossref — Funders. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: returns-list-all-funders-funder
+      description: Returns a list of all funders in the [Funder Registry](https://gitlab.com/crossref/open_funder_registry).
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: crossref-funders.get
+      with:
+        filter: tools.filter
+        cursor: tools.cursor
+        query: tools.query
+        rows: tools.rows
+        mailto: tools.mailto
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-metadata-specified-funder-and
+      description: Returns metadata for specified funder **and** its suborganizations, as an example use id 501100006004
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: crossref-funders.get
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: returns-list-works-associated-specified
+      description: Returns list of works associated with the specified {id}.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: crossref-funders.get
+      with:
+        rows: tools.rows
+        order: tools.order
+        facet: tools.facet
+        sample: tools.sample
+        sort: tools.sort
+        offset: tools.offset
+        mailto: tools.mailto
+        select: tools.select
+        query: tools.query
+        filter: tools.filter
+        cursor: tools.cursor
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
