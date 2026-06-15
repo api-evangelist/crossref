@@ -1,0 +1,920 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Crossref",
+    "version": "3.32.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Members",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /members/{id}/works",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/members/:id/works",
+            "params": [
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows per page"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Combined with sort can be used to specify the order of results, e.g. asc or desc"
+              },
+              {
+                "name": "facet",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to retrieve counts for pre-defined facets e.g. `type-name:*` returns counts of all works by type"
+              },
+              {
+                "name": "sample",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to return `N` randomly sampled items"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to sort results by a certain field, e.g. `score`"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows to skip before returning"
+              },
+              {
+                "name": "mailto",
+                "value": "",
+                "type": "query",
+                "description": "The email address to identify yourself and be in the \"polite pool\""
+              },
+              {
+                "name": "select",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to free text query certain fields"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to filter by certain fields, supports a comma separated list of lucene filters, e.g. `content-domain:psychoceramics.labs.crossref.org`"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to deep page through large result sets, where offset would cause performance problems"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns list of works associated with a Crossref member (deposited by a Crossref member) with {id}.\n## Queries\n\nFree form search queries can be made, for example, works that include `renear` or `ontologies` (or both):\n\n##\n\n```\n/works?query=renear+ontologies\n```\n\n\n## Field Queries\nField queries allow for queries that match only particular fields of metadata. For example, this query matches records that contain the tokens `richard` or `feynman` (or both) in any author field:\n\n##\n\n```\n/works?query."
+        },
+        {
+          "info": {
+            "name": "GET /members/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/members/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns metadata for a Crossref member, as an example use id 324"
+        },
+        {
+          "info": {
+            "name": "GET /members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/members",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to deep page through large result sets, where offset would cause performance problems"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to filter by certain fields, supports a comma separated list of lucene filters, e.g. `content-domain:psychoceramics.labs.crossref.org`"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to free text query certain fields"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows per page"
+              },
+              {
+                "name": "mailto",
+                "value": "",
+                "type": "query",
+                "description": "The email address to identify yourself and be in the \"polite pool\""
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows to skip before returning"
+              }
+            ]
+          },
+          "docs": "Returns a list of all Crossref members (mostly publishers).\n## Queries\n\nFree form search queries can be made, for example, funders that include `association` and `library`:\n\n##\n\n```\n/members?query=association+library\n```\n\n\n## Filters\n\nFilters allow you to select items based on specific criteria. All filter results are lists.\n\n##\n\nExample:\n\n##\n```\n/members?filter=current-doi-count:0\n```\n##\n\n### Multiple filters\n\nMultiple filters can be specified in a single query. In such a case, different filter"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Journals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /journals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/journals",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to deep page through large result sets, where offset would cause performance problems"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to free text query certain fields"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows per page"
+              },
+              {
+                "name": "mailto",
+                "value": "",
+                "type": "query",
+                "description": "The email address to identify yourself and be in the \"polite pool\""
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows to skip before returning"
+              }
+            ]
+          },
+          "docs": "Return a list of journals in the Crossref database.\n## Queries\n\nFree form search queries can be made, for example, journals that include `pharmacy` and `health`:\n\n##\n\n```\n/journals?query=pharmacy+health\n```\n\n\n## Pagination with offsets\n\nOffsets can be used to iterate over the results. For this route, the maximum number of available results is 80,000, which in this case allows to retrieve all the indexed items. This limit applies to the sum of values of parameters `offset` + `rows`.\n\n##\n\nThe numb"
+        },
+        {
+          "info": {
+            "name": "GET /journals/{issn}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/journals/:issn",
+            "params": [
+              {
+                "name": "issn",
+                "value": "",
+                "type": "path",
+                "description": "The ISSN identifier associated with the journal"
+              }
+            ]
+          },
+          "docs": "Returns information about a journal with the given ISSN, as an example use ISSN 03064530"
+        },
+        {
+          "info": {
+            "name": "GET /journals/{issn}/works",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/journals/:issn/works",
+            "params": [
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows per page"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Combined with sort can be used to specify the order of results, e.g. asc or desc"
+              },
+              {
+                "name": "facet",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to retrieve counts for pre-defined facets e.g. `type-name:*` returns counts of all works by type"
+              },
+              {
+                "name": "sample",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to return `N` randomly sampled items"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to sort results by a certain field, e.g. `score`"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows to skip before returning"
+              },
+              {
+                "name": "mailto",
+                "value": "",
+                "type": "query",
+                "description": "The email address to identify yourself and be in the \"polite pool\""
+              },
+              {
+                "name": "select",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to free text query certain fields"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to filter by certain fields, supports a comma separated list of lucene filters, e.g. `content-domain:psychoceramics.labs.crossref.org`"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to deep page through large result sets, where offset would cause performance problems"
+              },
+              {
+                "name": "issn",
+                "value": "",
+                "type": "path",
+                "description": "The ISSN identifier associated with the journal"
+              }
+            ]
+          },
+          "docs": "Returns a list of works in the journal identified by {issn}.\n## Queries\n\nFree form search queries can be made, for example, works that include `renear` or `ontologies` (or both):\n\n##\n\n```\n/works?query=renear+ontologies\n```\n\n\n## Field Queries\nField queries allow for queries that match only particular fields of metadata. For example, this query matches records that contain the tokens `richard` or `feynman` (or both) in any author field:\n\n##\n\n```\n/works?query.author=richard+feynman\n```\n\n##\n\nField q"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Prefixes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /prefixes/{prefix}/works",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/prefixes/:prefix/works",
+            "params": [
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows per page"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Combined with sort can be used to specify the order of results, e.g. asc or desc"
+              },
+              {
+                "name": "facet",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to retrieve counts for pre-defined facets e.g. `type-name:*` returns counts of all works by type"
+              },
+              {
+                "name": "sample",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to return `N` randomly sampled items"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to sort results by a certain field, e.g. `score`"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows to skip before returning"
+              },
+              {
+                "name": "mailto",
+                "value": "",
+                "type": "query",
+                "description": "The email address to identify yourself and be in the \"polite pool\""
+              },
+              {
+                "name": "select",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to free text query certain fields"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to filter by certain fields, supports a comma separated list of lucene filters, e.g. `content-domain:psychoceramics.labs.crossref.org`"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to deep page through large result sets, where offset would cause performance problems"
+              },
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns list of works associated with specified {prefix}.\n## Queries\n\nFree form search queries can be made, for example, works that include `renear` or `ontologies` (or both):\n\n##\n\n```\n/works?query=renear+ontologies\n```\n\n\n## Field Queries\nField queries allow for queries that match only particular fields of metadata. For example, this query matches records that contain the tokens `richard` or `feynman` (or both) in any author field:\n\n##\n\n```\n/works?query.author=richard+feynman\n```\n\n##\n\nField quer"
+        },
+        {
+          "info": {
+            "name": "GET /prefixes/{prefix}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/prefixes/:prefix",
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns metadata for the DOI owner prefix, as an example use prefix 10.1016"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Funders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /funders/{id}/works",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/funders/:id/works",
+            "params": [
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows per page"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Combined with sort can be used to specify the order of results, e.g. asc or desc"
+              },
+              {
+                "name": "facet",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to retrieve counts for pre-defined facets e.g. `type-name:*` returns counts of all works by type"
+              },
+              {
+                "name": "sample",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to return `N` randomly sampled items"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to sort results by a certain field, e.g. `score`"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows to skip before returning"
+              },
+              {
+                "name": "mailto",
+                "value": "",
+                "type": "query",
+                "description": "The email address to identify yourself and be in the \"polite pool\""
+              },
+              {
+                "name": "select",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to free text query certain fields"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to filter by certain fields, supports a comma separated list of lucene filters, e.g. `content-domain:psychoceramics.labs.crossref.org`"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to deep page through large result sets, where offset would cause performance problems"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the funder"
+              }
+            ]
+          },
+          "docs": "Returns list of works associated with the specified {id}.\n## Queries\n\nFree form search queries can be made, for example, works that include `renear` or `ontologies` (or both):\n\n##\n\n```\n/works?query=renear+ontologies\n```\n\n\n## Field Queries\nField queries allow for queries that match only particular fields of metadata. For example, this query matches records that contain the tokens `richard` or `feynman` (or both) in any author field:\n\n##\n\n```\n/works?query.author=richard+feynman\n```\n\n##\n\nField quer"
+        },
+        {
+          "info": {
+            "name": "GET /funders/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/funders/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the funder"
+              }
+            ]
+          },
+          "docs": "Returns metadata for specified funder **and** its suborganizations, as an example use id 501100006004"
+        },
+        {
+          "info": {
+            "name": "GET /funders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/funders",
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to search funders by location using a Lucene based syntax"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to deep page through large result sets, where offset would cause performance problems"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to free text query certain fields"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows per page"
+              },
+              {
+                "name": "mailto",
+                "value": "",
+                "type": "query",
+                "description": "The email address to identify yourself and be in the \"polite pool\""
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows to skip before returning"
+              }
+            ]
+          },
+          "docs": "Returns a list of all funders in the [Funder Registry](https://gitlab.com/crossref/open_funder_registry).\n## Queries\n\nFree form search queries can be made, for example, funders that include `research` and `foundation`:\n\n##\n\n```\n/funders?query=research+foundation\n```\n\n\n## Filters\n\nFilters allow you to select items based on specific criteria. All filter results are lists.\n\n##\n\nExample:\n\n##\n```\n/funders?filter=location:Spain\n```\n##\n\nThis endpoint supports the following filters:\n\n##\n\n+ `location` - "
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /types/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/types/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns information about a metadata work type, as an example use `monograph`"
+        },
+        {
+          "info": {
+            "name": "GET /types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/types",
+            "params": [
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows per page"
+              },
+              {
+                "name": "mailto",
+                "value": "",
+                "type": "query",
+                "description": "The email address to identify yourself and be in the \"polite pool\""
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows to skip before returning"
+              }
+            ]
+          },
+          "docs": "Returns a list of valid work types.\n## Pagination with offsets\n\nOffsets can be used to iterate over the results. For this route, the maximum number of available results is 80,000, which in this case allows to retrieve all the indexed items. This limit applies to the sum of values of parameters `offset` + `rows`.\n\n##\n\nThe number of items returned in a single response is controlled by `rows` parameter (default is 20, and maximum is 1,000). To limit results to 5, for example, you could do the follo"
+        },
+        {
+          "info": {
+            "name": "GET /types/{id}/works",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/types/:id/works",
+            "params": [
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows per page"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Combined with sort can be used to specify the order of results, e.g. asc or desc"
+              },
+              {
+                "name": "facet",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to retrieve counts for pre-defined facets e.g. `type-name:*` returns counts of all works by type"
+              },
+              {
+                "name": "sample",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to return `N` randomly sampled items"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to sort results by a certain field, e.g. `score`"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows to skip before returning"
+              },
+              {
+                "name": "mailto",
+                "value": "",
+                "type": "query",
+                "description": "The email address to identify yourself and be in the \"polite pool\""
+              },
+              {
+                "name": "select",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to free text query certain fields"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to filter by certain fields, supports a comma separated list of lucene filters, e.g. `content-domain:psychoceramics.labs.crossref.org`"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to deep page through large result sets, where offset would cause performance problems"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "returns list of works of type {id}.\n## Queries\n\nFree form search queries can be made, for example, works that include `renear` or `ontologies` (or both):\n\n##\n\n```\n/works?query=renear+ontologies\n```\n\n\n## Field Queries\nField queries allow for queries that match only particular fields of metadata. For example, this query matches records that contain the tokens `richard` or `feynman` (or both) in any author field:\n\n##\n\n```\n/works?query.author=richard+feynman\n```\n\n##\n\nField queries can be combined wi"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Licenses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /licenses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/licenses",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to free text query certain fields"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to deep page through large result sets, where offset would cause performance problems"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows per page"
+              },
+              {
+                "name": "mailto",
+                "value": "",
+                "type": "query",
+                "description": "The email address to identify yourself and be in the \"polite pool\""
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows to skip before returning"
+              }
+            ]
+          },
+          "docs": "Returns a list of licenses.\n## Querying\n\nThis endpoint accepts `query` parameter, which allows for free text querying. The result contains aggregated licenses from the works that match given query.\n\n##\n\nFor example, this request:\n\n##\n\n```\n/licenses?query=richard+feynman\n```\n\n##\n\nwill first select works matching `richard+feynman`, and aggregate their licenses.\n\n## Pagination with offsets\n\nOffsets are an easy way to iterate over results sets up to 10,000 items. This limit applies to the sum of val"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Works",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /works/{doi}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/works/:doi",
+            "params": [
+              {
+                "name": "doi",
+                "value": "",
+                "type": "path",
+                "description": "The DOI identifier associated with the work"
+              }
+            ]
+          },
+          "docs": "Returns metadata for the specified Crossref DOI, as an example use DOI 10.5555/12345678"
+        },
+        {
+          "info": {
+            "name": "GET /works",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/works",
+            "params": [
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows per page"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Combined with sort can be used to specify the order of results, e.g. asc or desc"
+              },
+              {
+                "name": "facet",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to retrieve counts for pre-defined facets e.g. `type-name:*` returns counts of all works by type"
+              },
+              {
+                "name": "sample",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to return `N` randomly sampled items"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to sort results by a certain field, e.g. `score`"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows to skip before returning"
+              },
+              {
+                "name": "mailto",
+                "value": "",
+                "type": "query",
+                "description": "The email address to identify yourself and be in the \"polite pool\""
+              },
+              {
+                "name": "select",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to free text query certain fields"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to filter by certain fields, supports a comma separated list of lucene filters, e.g. `content-domain:psychoceramics.labs.crossref.org`"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to deep page through large result sets, where offset would cause performance problems"
+              }
+            ]
+          },
+          "docs": "Returns a list of all works (journal articles, conference proceedings, books, components, etc), 20 per page.\n## Queries\n\nFree form search queries can be made, for example, works that include `renear` or `ontologies` (or both):\n\n##\n\n```\n/works?query=renear+ontologies\n```\n\n\n## Field Queries\nField queries allow for queries that match only particular fields of metadata. For example, this query matches records that contain the tokens `richard` or `feynman` (or both) in any author field:\n\n##\n\n```\n/wor"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Agency",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /works/{doi}/agency",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/works/:doi/agency",
+            "params": [
+              {
+                "name": "doi",
+                "value": "",
+                "type": "path",
+                "description": "The DOI identifier associated with the work"
+              }
+            ]
+          },
+          "docs": "Gets the agency associated with a specific work by its DOI, as an example use DOI 10.5555/12345678"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
