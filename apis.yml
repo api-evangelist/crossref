@@ -9,7 +9,7 @@ description: >-
   filters, facets, deep-paging cursors, and selection of specific elements, and is used by reference managers,
   repositories, discovery layers, and analytics platforms.
 url: https://raw.githubusercontent.com/api-evangelist/crossref/refs/heads/main/apis.yml
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Citations
   - DOI
