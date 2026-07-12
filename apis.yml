@@ -74,6 +74,10 @@ apis:
       - Types
       - Works
 common:
+  - type: VulnerabilityDisclosure
+    url: security/crossref-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/crossref-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/crossref
   - type: Vocabulary
