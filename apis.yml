@@ -74,6 +74,8 @@ apis:
       - Types
       - Works
 common:
+  - type: AgenticAccess
+    url: agentic-access/crossref-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/crossref-vulnerability-disclosure.yml
   - type: DomainSecurity
