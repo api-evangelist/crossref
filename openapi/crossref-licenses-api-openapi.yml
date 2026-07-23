@@ -1,0 +1,220 @@
+openapi: 3.0.1
+info:
+  title: Crossref Agency Licenses API
+  description: The Crossref REST API is one of a variety of tools and APIs that allow anybody to search and reuse our members' metadata in sophisticated ways.
+  contact:
+    name: Crossref
+    url: https://crossref.org
+    email: support@crossref.org
+  version: 3.32.0
+servers:
+- url: /
+tags:
+- name: Licenses
+  description: Endpoints that expose license related data
+paths:
+  /licenses:
+    get:
+      tags:
+      - Licenses
+      description: 'Returns a list of licenses.
+
+        ## Querying
+
+
+        This endpoint accepts `query` parameter, which allows for free text querying. The result contains aggregated licenses from the works that match given query.
+
+
+        ##
+
+
+        For example, this request:
+
+
+        ##
+
+
+        ```
+
+        /licenses?query=richard+feynman
+
+        ```
+
+
+        ##
+
+
+        will first select works matching `richard+feynman`, and aggregate their licenses.
+
+
+        ## Pagination with offsets
+
+
+        Offsets are an easy way to iterate over results sets up to 10,000 items. This limit applies to the sum of values of parameters `offset` + `rows`.
+
+
+        ##
+
+
+        The number of items returned in a single response is controlled by `rows` parameter (default is 20, and maximum is 1,000). To limit results to 5, for example, you could do the following:
+
+
+        ##
+
+
+        ```
+
+        /works?query=allen+renear&rows=5
+
+        ```
+
+
+        ##
+
+
+        `offset` parameter can be used to retrieve items starting from a specific index of the result list. For example, to select the second set of 5 results (i.e. results 6 through 10), you would do the following:
+
+
+        ##
+
+
+        ```
+
+        /works?query=allen+renear&rows=5&offset=5
+
+        ```
+
+
+        ##
+
+
+        ## Deep paging
+
+
+        Deep paging using cursors can be used to iterate over large result sets, without any limits on their size.
+
+
+        ##
+
+
+        To use deep paging make a query as normal, but include the `cursor` parameter with a value of `*`, for example:
+
+
+        ##
+
+
+        ```
+
+        /members/311/works?filter=type:journal-article&cursor=*
+
+        ```
+
+
+        ##
+
+
+        A `next-cursor` field will be provided in the JSON response. To get the next page of results, pass the value of `next-cursor` as the cursor parameter (remember to URL-encode). For example:
+
+
+        ##
+
+
+        ```
+
+        /members/311/works?filter=type:journal-article&cursor=<value of next-cursor parameter>
+
+        ```
+
+
+        ##
+
+
+        Clients should check the number of returned items. If the number of returned items is equal to the number of expected rows then the end of the result set has been reached. Using next-cursor beyond this point will result in responses with an empty items list. Cursors expire after 5 minutes if they are not used.
+
+
+        ##
+
+        '
+      parameters:
+      - name: query
+        in: query
+        description: Exposes the ability to free text query certain fields
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        description: Exposes the ability to deep page through large result sets, where offset would cause performance problems
+        schema:
+          type: string
+      - name: rows
+        in: query
+        description: The number of rows per page
+        schema:
+          type: integer
+          format: int64
+      - name: mailto
+        in: query
+        description: The email address to identify yourself and be in the "polite pool"
+        schema:
+          pattern: ^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\.[A-Za-z]{2,6}$
+          type: string
+      - name: offset
+        in: query
+        description: The number of rows to skip before returning
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: A list of licenses
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LicensesMessage'
+components:
+  schemas:
+    Licenses:
+      required:
+      - items
+      - total-results
+      type: object
+      properties:
+        total-results:
+          type: integer
+          format: int64
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/License'
+      additionalProperties: false
+    LicensesMessage:
+      required:
+      - message
+      - message-type
+      - message-version
+      - status
+      type: object
+      properties:
+        status:
+          type: string
+        message-type:
+          pattern: license-list
+          type: string
+        message-version:
+          type: string
+        message:
+          $ref: '#/components/schemas/Licenses'
+      additionalProperties: false
+    License:
+      required:
+      - URL
+      - work-count
+      type: object
+      properties:
+        URL:
+          type: string
+        work-count:
+          type: integer
+          format: int64
+      additionalProperties: false
+x-original-swagger-version: '2.0'

@@ -1,0 +1,80 @@
+openapi: 3.0.1
+info:
+  title: Crossref Agency API
+  description: The Crossref REST API is one of a variety of tools and APIs that allow anybody to search and reuse our members' metadata in sophisticated ways.
+  contact:
+    name: Crossref
+    url: https://crossref.org
+    email: support@crossref.org
+  version: 3.32.0
+servers:
+- url: /
+tags:
+- name: Agency
+paths:
+  /works/{doi}/agency:
+    get:
+      tags:
+      - Agency
+      description: Gets the agency associated with a specific work by its DOI, as an example use DOI 10.5555/12345678
+      parameters:
+      - name: doi
+        in: path
+        description: The DOI identifier associated with the work
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The agency associated with work identified by {doi}.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgencyMessage'
+        '404':
+          description: The work identified by {doi} does not exist.
+          content: {}
+components:
+  schemas:
+    Agency:
+      required:
+      - id
+      - label
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+      additionalProperties: false
+    DoiAgency:
+      required:
+      - DOI
+      - agency
+      type: object
+      properties:
+        DOI:
+          type: string
+          description: The DOI identifier associated with the work
+        agency:
+          $ref: '#/components/schemas/Agency'
+      additionalProperties: false
+    AgencyMessage:
+      required:
+      - message
+      - message-type
+      - message-version
+      - status
+      type: object
+      properties:
+        status:
+          type: string
+        message-type:
+          pattern: work-agency
+          type: string
+        message-version:
+          type: string
+        message:
+          $ref: '#/components/schemas/DoiAgency'
+      additionalProperties: false
+x-original-swagger-version: '2.0'
