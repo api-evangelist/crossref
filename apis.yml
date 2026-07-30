@@ -9,7 +9,19 @@ description: >-
   filters, facets, deep-paging cursors, and selection of specific elements, and is used by reference managers,
   repositories, discovery layers, and analytics platforms.
 url: https://raw.githubusercontent.com/api-evangelist/crossref/refs/heads/main/apis.yml
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/crossref.png
 tags:
   - Citations
   - DOI
@@ -33,46 +45,230 @@ type: Index
 access: Public
 position: Provider
 apis:
-  - aid: crossref:crossref-rest-api
-    name: Crossref REST API
-    description: >-
-      The Crossref REST API is a public, read-only metadata API that provides programmatic access to Crossref's database
-      of scholarly content. Endpoints expose works, journals, members, funders, types, licenses, prefixes, and DOI
-      registration agency lookups, with rich query, filter, facet, sort, select, and cursor-based deep paging
-      capabilities. No sign-up is required, but consumers are encouraged to use the polite pool by including a mailto
-      query parameter or User-Agent contact for higher reliability.
-    humanURL: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
-    baseURL: https://api.crossref.org
-    properties:
-      - type: Documentation
-        url: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
-      - type: SwaggerUI
-        url: https://api.crossref.org/swagger-ui/
-      - type: PolitePool
-        url: >-
-          https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/#etiquette
-      - type: Tips
-        url: https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/
-      - type: OpenAPI
-        url: openapi/crossref-openapi.yml
-      - type: Rules
-        url: rules/crossref-rules.yml
-      - type: Capabilities
-        url: capabilities/crossref-capabilities.yml
-      - type: JSONSchema
-        url: json-schema/crossref-work-schema.json
-      - type: JSONLD
-        url: json-ld/crossref-context.jsonld
-    tags:
-      - Agency
-      - Funders
-      - Journals
-      - Licenses
-      - Members
-      - Metadata
-      - Prefixes
-      - Types
-      - Works
+- aid: crossref:crossref-agency-api
+  name: Crossref Agency API
+  description: The Agency API from Crossref — 1 operation(s) for agency.
+  humanURL: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+  baseURL: https://api.crossref.org
+  tags:
+  - Agency
+  properties:
+  - type: OpenAPI
+    url: openapi/crossref-agency-api-openapi.yml
+  - type: Documentation
+    url: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+  - type: SwaggerUI
+    url: https://api.crossref.org/swagger-ui/
+  - type: PolitePool
+    url: >-
+      https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/#etiquette
+  - type: Tips
+    url: >-
+      https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/
+  - type: Rules
+    url: rules/crossref-rules.yml
+  - type: Capabilities
+    url: capabilities/crossref-capabilities.yml
+  - type: JSONSchema
+    url: json-schema/crossref-work-schema.json
+  - type: JSONLD
+    url: json-ld/crossref-context.jsonld
+- aid: crossref:crossref-funders-api
+  name: Crossref Funders API
+  description: Endpoints that expose funder related data
+  humanURL: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+  baseURL: https://api.crossref.org
+  tags:
+  - Funders
+  properties:
+  - type: OpenAPI
+    url: openapi/crossref-funders-api-openapi.yml
+  - type: Documentation
+    url: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+  - type: SwaggerUI
+    url: https://api.crossref.org/swagger-ui/
+  - type: PolitePool
+    url: >-
+      https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/#etiquette
+  - type: Tips
+    url: >-
+      https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/
+  - type: Rules
+    url: rules/crossref-rules.yml
+  - type: Capabilities
+    url: capabilities/crossref-capabilities.yml
+  - type: JSONSchema
+    url: json-schema/crossref-work-schema.json
+  - type: JSONLD
+    url: json-ld/crossref-context.jsonld
+- aid: crossref:crossref-journals-api
+  name: Crossref Journals API
+  description: Endpoints that expose journal related data
+  humanURL: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+  baseURL: https://api.crossref.org
+  tags:
+  - Journals
+  properties:
+  - type: OpenAPI
+    url: openapi/crossref-journals-api-openapi.yml
+  - type: Documentation
+    url: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+  - type: SwaggerUI
+    url: https://api.crossref.org/swagger-ui/
+  - type: PolitePool
+    url: >-
+      https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/#etiquette
+  - type: Tips
+    url: >-
+      https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/
+  - type: Rules
+    url: rules/crossref-rules.yml
+  - type: Capabilities
+    url: capabilities/crossref-capabilities.yml
+  - type: JSONSchema
+    url: json-schema/crossref-work-schema.json
+  - type: JSONLD
+    url: json-ld/crossref-context.jsonld
+- aid: crossref:crossref-licenses-api
+  name: Crossref Licenses API
+  description: Endpoints that expose license related data
+  humanURL: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+  baseURL: https://api.crossref.org
+  tags:
+  - Licenses
+  properties:
+  - type: OpenAPI
+    url: openapi/crossref-licenses-api-openapi.yml
+  - type: Documentation
+    url: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+  - type: SwaggerUI
+    url: https://api.crossref.org/swagger-ui/
+  - type: PolitePool
+    url: >-
+      https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/#etiquette
+  - type: Tips
+    url: >-
+      https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/
+  - type: Rules
+    url: rules/crossref-rules.yml
+  - type: Capabilities
+    url: capabilities/crossref-capabilities.yml
+  - type: JSONSchema
+    url: json-schema/crossref-work-schema.json
+  - type: JSONLD
+    url: json-ld/crossref-context.jsonld
+- aid: crossref:crossref-members-api
+  name: Crossref Members API
+  description: Endpoints that expose member related data
+  humanURL: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+  baseURL: https://api.crossref.org
+  tags:
+  - Members
+  properties:
+  - type: OpenAPI
+    url: openapi/crossref-members-api-openapi.yml
+  - type: Documentation
+    url: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+  - type: SwaggerUI
+    url: https://api.crossref.org/swagger-ui/
+  - type: PolitePool
+    url: >-
+      https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/#etiquette
+  - type: Tips
+    url: >-
+      https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/
+  - type: Rules
+    url: rules/crossref-rules.yml
+  - type: Capabilities
+    url: capabilities/crossref-capabilities.yml
+  - type: JSONSchema
+    url: json-schema/crossref-work-schema.json
+  - type: JSONLD
+    url: json-ld/crossref-context.jsonld
+- aid: crossref:crossref-prefixes-api
+  name: Crossref Prefixes API
+  description: Endpoints that expose prefix related data
+  humanURL: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+  baseURL: https://api.crossref.org
+  tags:
+  - Prefixes
+  properties:
+  - type: OpenAPI
+    url: openapi/crossref-prefixes-api-openapi.yml
+  - type: Documentation
+    url: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+  - type: SwaggerUI
+    url: https://api.crossref.org/swagger-ui/
+  - type: PolitePool
+    url: >-
+      https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/#etiquette
+  - type: Tips
+    url: >-
+      https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/
+  - type: Rules
+    url: rules/crossref-rules.yml
+  - type: Capabilities
+    url: capabilities/crossref-capabilities.yml
+  - type: JSONSchema
+    url: json-schema/crossref-work-schema.json
+  - type: JSONLD
+    url: json-ld/crossref-context.jsonld
+- aid: crossref:crossref-types-api
+  name: Crossref Types API
+  description: Endpoints that expose type related data
+  humanURL: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+  baseURL: https://api.crossref.org
+  tags:
+  - Types
+  properties:
+  - type: OpenAPI
+    url: openapi/crossref-types-api-openapi.yml
+  - type: Documentation
+    url: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+  - type: SwaggerUI
+    url: https://api.crossref.org/swagger-ui/
+  - type: PolitePool
+    url: >-
+      https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/#etiquette
+  - type: Tips
+    url: >-
+      https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/
+  - type: Rules
+    url: rules/crossref-rules.yml
+  - type: Capabilities
+    url: capabilities/crossref-capabilities.yml
+  - type: JSONSchema
+    url: json-schema/crossref-work-schema.json
+  - type: JSONLD
+    url: json-ld/crossref-context.jsonld
+- aid: crossref:crossref-works-api
+  name: Crossref Works API
+  description: Endpoints that expose works related data
+  humanURL: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+  baseURL: https://api.crossref.org
+  tags:
+  - Works
+  properties:
+  - type: OpenAPI
+    url: openapi/crossref-works-api-openapi.yml
+  - type: Documentation
+    url: https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+  - type: SwaggerUI
+    url: https://api.crossref.org/swagger-ui/
+  - type: PolitePool
+    url: >-
+      https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/#etiquette
+  - type: Tips
+    url: >-
+      https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/
+  - type: Rules
+    url: rules/crossref-rules.yml
+  - type: Capabilities
+    url: capabilities/crossref-capabilities.yml
+  - type: JSONSchema
+    url: json-schema/crossref-work-schema.json
+  - type: JSONLD
+    url: json-ld/crossref-context.jsonld
 common:
   - type: AgenticAccess
     url: agentic-access/crossref-agentic-access.yml
