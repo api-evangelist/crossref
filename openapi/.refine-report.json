@@ -1,0 +1,28 @@
+{
+  "provider": "crossref",
+  "sources": [
+    "crossref-agency-api-openapi.yml",
+    "crossref-funders-api-openapi.yml",
+    "crossref-journals-api-openapi.yml",
+    "crossref-licenses-api-openapi.yml",
+    "crossref-members-api-openapi.yml",
+    "crossref-prefixes-api-openapi.yml",
+    "crossref-types-api-openapi.yml",
+    "crossref-works-api-openapi.yml"
+  ],
+  "outputs": [
+    "crossref-agency-api-openapi.yml",
+    "crossref-funders-api-openapi.yml",
+    "crossref-journals-api-openapi.yml",
+    "crossref-licenses-api-openapi.yml",
+    "crossref-members-api-openapi.yml",
+    "crossref-prefixes-api-openapi.yml",
+    "crossref-types-api-openapi.yml",
+    "crossref-works-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
