@@ -67,8 +67,6 @@ apis:
       https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/
   - type: Rules
     url: rules/crossref-rules.yml
-  - type: Capabilities
-    url: capabilities/crossref-capabilities.yml
   - type: JSONSchema
     url: json-schema/crossref-work-schema.json
   - type: JSONLD
@@ -95,8 +93,6 @@ apis:
       https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/
   - type: Rules
     url: rules/crossref-rules.yml
-  - type: Capabilities
-    url: capabilities/crossref-capabilities.yml
   - type: JSONSchema
     url: json-schema/crossref-work-schema.json
   - type: JSONLD
@@ -123,8 +119,6 @@ apis:
       https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/
   - type: Rules
     url: rules/crossref-rules.yml
-  - type: Capabilities
-    url: capabilities/crossref-capabilities.yml
   - type: JSONSchema
     url: json-schema/crossref-work-schema.json
   - type: JSONLD
@@ -151,8 +145,6 @@ apis:
       https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/
   - type: Rules
     url: rules/crossref-rules.yml
-  - type: Capabilities
-    url: capabilities/crossref-capabilities.yml
   - type: JSONSchema
     url: json-schema/crossref-work-schema.json
   - type: JSONLD
@@ -179,8 +171,6 @@ apis:
       https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/
   - type: Rules
     url: rules/crossref-rules.yml
-  - type: Capabilities
-    url: capabilities/crossref-capabilities.yml
   - type: JSONSchema
     url: json-schema/crossref-work-schema.json
   - type: JSONLD
@@ -207,8 +197,6 @@ apis:
       https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/
   - type: Rules
     url: rules/crossref-rules.yml
-  - type: Capabilities
-    url: capabilities/crossref-capabilities.yml
   - type: JSONSchema
     url: json-schema/crossref-work-schema.json
   - type: JSONLD
@@ -235,8 +223,6 @@ apis:
       https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/
   - type: Rules
     url: rules/crossref-rules.yml
-  - type: Capabilities
-    url: capabilities/crossref-capabilities.yml
   - type: JSONSchema
     url: json-schema/crossref-work-schema.json
   - type: JSONLD
@@ -263,8 +249,6 @@ apis:
       https://www.crossref.org/documentation/retrieve-metadata/rest-api/tips-for-using-the-crossref-rest-api/
   - type: Rules
     url: rules/crossref-rules.yml
-  - type: Capabilities
-    url: capabilities/crossref-capabilities.yml
   - type: JSONSchema
     url: json-schema/crossref-work-schema.json
   - type: JSONLD
