@@ -5,7 +5,7 @@
       "source": "https://www.crossref.org/blog/feed.xml",
       "feed_url": "https://www.crossref.org/blog/feed.xml",
       "title": "",
-      "saved": 1,
+      "saved": 0,
       "method": "feed"
     },
     {
@@ -23,6 +23,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 66,
-  "fetched": "2026-08-06T14:08:46Z"
+  "post_count": 69,
+  "fetched": "2026-08-15T12:22:01Z"
 }
