@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Crossref Agency Licenses API",
+    "version": "3.32.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Licenses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /licenses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/licenses",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to free text query certain fields"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to deep page through large result sets, where offset would cause performance problems"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows per page"
+              },
+              {
+                "name": "mailto",
+                "value": "",
+                "type": "query",
+                "description": "The email address to identify yourself and be in the \"polite pool\""
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows to skip before returning"
+              }
+            ]
+          },
+          "docs": "Returns a list of licenses.\n## Querying\n\nThis endpoint accepts `query` parameter, which allows for free text querying. The result contains aggregated licenses from the works that match given query.\n\n##\n\nFor example, this request:\n\n##\n\n```\n/licenses?query=richard+feynman\n```\n\n##\n\nwill first select works matching `richard+feynman`, and aggregate their licenses.\n\n## Pagination with offsets\n\nOffsets are an easy way to iterate over results sets up to 10,000 items. This limit applies to the sum of val"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

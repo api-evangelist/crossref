@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Crossref Agency API",
+    "version": "3.32.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Agency",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /works/{doi}/agency",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/works/:doi/agency",
+            "params": [
+              {
+                "name": "doi",
+                "value": "",
+                "type": "path",
+                "description": "The DOI identifier associated with the work"
+              }
+            ]
+          },
+          "docs": "Gets the agency associated with a specific work by its DOI, as an example use DOI 10.5555/12345678"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,154 @@
+{
+  "item": [
+    {
+      "id": "ee83232d-1f78-4a1e-88d9-718e3e710b59",
+      "name": "Licenses",
+      "description": {
+        "content": "Endpoints that expose license related data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1ee01e0f-0229-4495-88c6-dc650e59558b",
+          "name": "Returns a list of licenses.\n## Querying\n\nThis endpoint accepts `query` parameter, which allows for free text querying. The result contains aggregated licenses from the works that match given query.\n\n##\n\nFor example, this request:\n\n##\n\n```\n/licenses?query=richard+feynman\n```\n\n##\n\nwill first select works matching `richard+feynman`, and aggregate their licenses.\n\n## Pagination with offsets\n\nOffsets are an easy way to iterate over results sets up to 10,000 items. This limit applies to the sum of values of parameters `offset` + `rows`.\n\n##\n\nThe number of items returned in a single response is controlled by `rows` parameter (default is 20, and maximum is 1,000). To limit results to 5, for example, you could do the following:\n\n##\n\n```\n/works?query=allen+renear&rows=5\n```\n\n##\n\n`offset` parameter can be used to retrieve items starting from a specific index of the result list. For example, to select the second set of 5 results (i.e. results 6 through 10), you would do the following:\n\n##\n\n```\n/works?query=allen+renear&rows=5&offset=5\n```\n\n##\n\n## Deep paging\n\nDeep paging using cursors can be used to iterate over large result sets, without any limits on their size.\n\n##\n\nTo use deep paging make a query as normal, but include the `cursor` parameter with a value of `*`, for example:\n\n##\n\n```\n/members/311/works?filter=type:journal-article&cursor=*\n```\n\n##\n\nA `next-cursor` field will be provided in the JSON response. To get the next page of results, pass the value of `next-cursor` as the cursor parameter (remember to URL-encode). For example:\n\n##\n\n```\n/members/311/works?filter=type:journal-article&cursor=<value of next-cursor parameter>\n```\n\n##\n\nClients should check the number of returned items. If the number of returned items is equal to the number of expected rows then the end of the result set has been reached. Using next-cursor beyond this point will result in responses with an empty items list. Cursors expire after 5 minutes if they are not used.\n\n##\n",
+          "request": {
+            "name": "Returns a list of licenses.\n## Querying\n\nThis endpoint accepts `query` parameter, which allows for free text querying. The result contains aggregated licenses from the works that match given query.\n\n##\n\nFor example, this request:\n\n##\n\n```\n/licenses?query=richard+feynman\n```\n\n##\n\nwill first select works matching `richard+feynman`, and aggregate their licenses.\n\n## Pagination with offsets\n\nOffsets are an easy way to iterate over results sets up to 10,000 items. This limit applies to the sum of values of parameters `offset` + `rows`.\n\n##\n\nThe number of items returned in a single response is controlled by `rows` parameter (default is 20, and maximum is 1,000). To limit results to 5, for example, you could do the following:\n\n##\n\n```\n/works?query=allen+renear&rows=5\n```\n\n##\n\n`offset` parameter can be used to retrieve items starting from a specific index of the result list. For example, to select the second set of 5 results (i.e. results 6 through 10), you would do the following:\n\n##\n\n```\n/works?query=allen+renear&rows=5&offset=5\n```\n\n##\n\n## Deep paging\n\nDeep paging using cursors can be used to iterate over large result sets, without any limits on their size.\n\n##\n\nTo use deep paging make a query as normal, but include the `cursor` parameter with a value of `*`, for example:\n\n##\n\n```\n/members/311/works?filter=type:journal-article&cursor=*\n```\n\n##\n\nA `next-cursor` field will be provided in the JSON response. To get the next page of results, pass the value of `next-cursor` as the cursor parameter (remember to URL-encode). For example:\n\n##\n\n```\n/members/311/works?filter=type:journal-article&cursor=<value of next-cursor parameter>\n```\n\n##\n\nClients should check the number of returned items. If the number of returned items is equal to the number of expected rows then the end of the result set has been reached. Using next-cursor beyond this point will result in responses with an empty items list. Cursors expire after 5 minutes if they are not used.\n\n##\n",
+            "description": {
+              "content": "Returns a list of licenses.\n## Querying\n\nThis endpoint accepts `query` parameter, which allows for free text querying. The result contains aggregated licenses from the works that match given query.\n\n##\n\nFor example, this request:\n\n##\n\n```\n/licenses?query=richard+feynman\n```\n\n##\n\nwill first select works matching `richard+feynman`, and aggregate their licenses.\n\n## Pagination with offsets\n\nOffsets are an easy way to iterate over results sets up to 10,000 items. This limit applies to the sum of values of parameters `offset` + `rows`.\n\n##\n\nThe number of items returned in a single response is controlled by `rows` parameter (default is 20, and maximum is 1,000). To limit results to 5, for example, you could do the following:\n\n##\n\n```\n/works?query=allen+renear&rows=5\n```\n\n##\n\n`offset` parameter can be used to retrieve items starting from a specific index of the result list. For example, to select the second set of 5 results (i.e. results 6 through 10), you would do the following:\n\n##\n\n```\n/works?query=allen+renear&rows=5&offset=5\n```\n\n##\n\n## Deep paging\n\nDeep paging using cursors can be used to iterate over large result sets, without any limits on their size.\n\n##\n\nTo use deep paging make a query as normal, but include the `cursor` parameter with a value of `*`, for example:\n\n##\n\n```\n/members/311/works?filter=type:journal-article&cursor=*\n```\n\n##\n\nA `next-cursor` field will be provided in the JSON response. To get the next page of results, pass the value of `next-cursor` as the cursor parameter (remember to URL-encode). For example:\n\n##\n\n```\n/members/311/works?filter=type:journal-article&cursor=<value of next-cursor parameter>\n```\n\n##\n\nClients should check the number of returned items. If the number of returned items is equal to the number of expected rows then the end of the result set has been reached. Using next-cursor beyond this point will result in responses with an empty items list. Cursors expire after 5 minutes if they are not used.\n\n##\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "licenses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Exposes the ability to free text query certain fields"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Exposes the ability to deep page through large result sets, where offset would cause performance problems"
+                },
+                {
+                  "disabled": false,
+                  "key": "rows",
+                  "value": "<long>",
+                  "description": "The number of rows per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "mailto",
+                  "value": "<string>",
+                  "description": "The email address to identify yourself and be in the \"polite pool\""
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "The number of rows to skip before returning"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "85b5961f-401a-4ace-a72a-f10d192fe26a",
+              "name": "A list of licenses",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "licenses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "mailto",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": {\n    \"items\": [\n      {\n        \"URL\": \"string\",\n        \"work-count\": 4498\n      },\n      {\n        \"URL\": \"string\",\n        \"work-count\": 9683\n      }\n    ],\n    \"total-results\": 6499\n  },\n  \"message-type\": \"license-list\",\n  \"message-version\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "238a1695-e760-4542-9b5b-3e8b18fc6dff",
+    "name": "Crossref Agency Licenses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Crossref REST API is one of a variety of tools and APIs that allow anybody to search and reuse our members' metadata in sophisticated ways.\n\nContact Support:\n Name: Crossref\n Email: support@crossref.org",
+      "type": "text/plain"
+    }
+  }
+}

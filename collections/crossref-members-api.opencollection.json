@@ -1,0 +1,169 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Crossref Agency Members API",
+    "version": "3.32.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Members",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /members/{id}/works",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/members/:id/works",
+            "params": [
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows per page"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Combined with sort can be used to specify the order of results, e.g. asc or desc"
+              },
+              {
+                "name": "facet",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to retrieve counts for pre-defined facets e.g. `type-name:*` returns counts of all works by type"
+              },
+              {
+                "name": "sample",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to return `N` randomly sampled items"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to sort results by a certain field, e.g. `score`"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows to skip before returning"
+              },
+              {
+                "name": "mailto",
+                "value": "",
+                "type": "query",
+                "description": "The email address to identify yourself and be in the \"polite pool\""
+              },
+              {
+                "name": "select",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to free text query certain fields"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to filter by certain fields, supports a comma separated list of lucene filters, e.g. `content-domain:psychoceramics.labs.crossref.org`"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to deep page through large result sets, where offset would cause performance problems"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns list of works associated with a Crossref member (deposited by a Crossref member) with {id}.\n## Queries\n\nFree form search queries can be made, for example, works that include `renear` or `ontologies` (or both):\n\n##\n\n```\n/works?query=renear+ontologies\n```\n\n\n## Field Queries\nField queries allow for queries that match only particular fields of metadata. For example, this query matches records that contain the tokens `richard` or `feynman` (or both) in any author field:\n\n##\n\n```\n/works?query."
+        },
+        {
+          "info": {
+            "name": "GET /members/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/members/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns metadata for a Crossref member, as an example use id 324"
+        },
+        {
+          "info": {
+            "name": "GET /members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/members",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to deep page through large result sets, where offset would cause performance problems"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to filter by certain fields, supports a comma separated list of lucene filters, e.g. `content-domain:psychoceramics.labs.crossref.org`"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to free text query certain fields"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows per page"
+              },
+              {
+                "name": "mailto",
+                "value": "",
+                "type": "query",
+                "description": "The email address to identify yourself and be in the \"polite pool\""
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows to skip before returning"
+              }
+            ]
+          },
+          "docs": "Returns a list of all Crossref members (mostly publishers).\n## Queries\n\nFree form search queries can be made, for example, funders that include `association` and `library`:\n\n##\n\n```\n/members?query=association+library\n```\n\n\n## Filters\n\nFilters allow you to select items based on specific criteria. All filter results are lists.\n\n##\n\nExample:\n\n##\n```\n/members?filter=current-doi-count:0\n```\n##\n\n### Multiple filters\n\nMultiple filters can be specified in a single query. In such a case, different filter"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

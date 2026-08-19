@@ -1,0 +1,165 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Crossref Agency Journals API",
+    "version": "3.32.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Journals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /journals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/journals",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to deep page through large result sets, where offset would cause performance problems"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to free text query certain fields"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows per page"
+              },
+              {
+                "name": "mailto",
+                "value": "",
+                "type": "query",
+                "description": "The email address to identify yourself and be in the \"polite pool\""
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows to skip before returning"
+              }
+            ]
+          },
+          "docs": "Return a list of journals in the Crossref database.\n## Queries\n\nFree form search queries can be made, for example, journals that include `pharmacy` and `health`:\n\n##\n\n```\n/journals?query=pharmacy+health\n```\n\n\n## Pagination with offsets\n\nOffsets can be used to iterate over the results. For this route, the maximum number of available results is 80,000, which in this case allows to retrieve all the indexed items. This limit applies to the sum of values of parameters `offset` + `rows`.\n\n##\n\nThe numb"
+        },
+        {
+          "info": {
+            "name": "GET /journals/{issn}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/journals/:issn",
+            "params": [
+              {
+                "name": "issn",
+                "value": "",
+                "type": "path",
+                "description": "The ISSN identifier associated with the journal"
+              }
+            ]
+          },
+          "docs": "Returns information about a journal with the given ISSN, as an example use ISSN 03064530"
+        },
+        {
+          "info": {
+            "name": "GET /journals/{issn}/works",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/journals/:issn/works",
+            "params": [
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows per page"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Combined with sort can be used to specify the order of results, e.g. asc or desc"
+              },
+              {
+                "name": "facet",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to retrieve counts for pre-defined facets e.g. `type-name:*` returns counts of all works by type"
+              },
+              {
+                "name": "sample",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to return `N` randomly sampled items"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to sort results by a certain field, e.g. `score`"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of rows to skip before returning"
+              },
+              {
+                "name": "mailto",
+                "value": "",
+                "type": "query",
+                "description": "The email address to identify yourself and be in the \"polite pool\""
+              },
+              {
+                "name": "select",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to free text query certain fields"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to filter by certain fields, supports a comma separated list of lucene filters, e.g. `content-domain:psychoceramics.labs.crossref.org`"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Exposes the ability to deep page through large result sets, where offset would cause performance problems"
+              },
+              {
+                "name": "issn",
+                "value": "",
+                "type": "path",
+                "description": "The ISSN identifier associated with the journal"
+              }
+            ]
+          },
+          "docs": "Returns a list of works in the journal identified by {issn}.\n## Queries\n\nFree form search queries can be made, for example, works that include `renear` or `ontologies` (or both):\n\n##\n\n```\n/works?query=renear+ontologies\n```\n\n\n## Field Queries\nField queries allow for queries that match only particular fields of metadata. For example, this query matches records that contain the tokens `richard` or `feynman` (or both) in any author field:\n\n##\n\n```\n/works?query.author=richard+feynman\n```\n\n##\n\nField q"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
