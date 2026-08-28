@@ -9,6 +9,18 @@ description: >-
   filters, facets, deep-paging cursors, and selection of specific elements, and is used by reference managers,
   repositories, discovery layers, and analytics platforms.
 url: https://raw.githubusercontent.com/api-evangelist/crossref/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
