@@ -266,6 +266,9 @@ apis:
   - type: JSONLD
     url: json-ld/crossref-context.jsonld
 common:
+  - type: CapabilityMap
+    url: capabilities/crossref-capability-edges.yml
+    name: Crossref Business Capability Map
   - type: AgenticAccess
     url: agentic-access/crossref-agentic-access.yml
   - type: VulnerabilityDisclosure
