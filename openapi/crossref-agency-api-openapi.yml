@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Crossref Agency API
   description: The Crossref REST API is one of a variety of tools and APIs that allow anybody to search and reuse our members' metadata in sophisticated ways.
@@ -34,19 +34,12 @@ paths:
         '404':
           description: The work identified by {doi} does not exist.
           content: {}
+      summary: Get works by doi agency
+      x-summary-source: derived
+      operationId: getWorksByDoiAgency
+      x-operation-id-source: derived
 components:
   schemas:
-    Agency:
-      required:
-      - id
-      - label
-      type: object
-      properties:
-        id:
-          type: string
-        label:
-          type: string
-      additionalProperties: false
     DoiAgency:
       required:
       - DOI
@@ -76,5 +69,16 @@ components:
           type: string
         message:
           $ref: '#/components/schemas/DoiAgency'
+      additionalProperties: false
+    Agency:
+      required:
+      - id
+      - label
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: string
       additionalProperties: false
 x-original-swagger-version: '2.0'

@@ -1,14 +1,7 @@
 {
   "provider": "crossref",
   "sources": [
-    "crossref-agency-api-openapi.yml",
-    "crossref-funders-api-openapi.yml",
-    "crossref-journals-api-openapi.yml",
-    "crossref-licenses-api-openapi.yml",
-    "crossref-members-api-openapi.yml",
-    "crossref-prefixes-api-openapi.yml",
-    "crossref-types-api-openapi.yml",
-    "crossref-works-api-openapi.yml"
+    "_original/crossref-openapi.yml"
   ],
   "outputs": [
     "crossref-agency-api-openapi.yml",
@@ -23,6 +16,19 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "crossref-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "crossref-agency-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "crossref-funders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "crossref-journals-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "crossref-licenses-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "crossref-members-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "crossref-prefixes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "crossref-types-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "crossref-works-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Crossref Agency Licenses API
+  title: Crossref Licenses API
   description: The Crossref REST API is one of a variety of tools and APIs that allow anybody to search and reuse our members' metadata in sophisticated ways.
   contact:
     name: Crossref
@@ -121,7 +121,7 @@ paths:
 
         ```
 
-        /members/311/works?filter=type:journal-article&cursor=<value of next-cursor parameter>
+        /members/311/works?filter=type:journal-article&cursor=
 
         ```
 
@@ -132,9 +132,7 @@ paths:
         Clients should check the number of returned items. If the number of returned items is equal to the number of expected rows then the end of the result set has been reached. Using next-cursor beyond this point will result in responses with an empty items list. Cursors expire after 5 minutes if they are not used.
 
 
-        ##
-
-        '
+        ##'
       parameters:
       - name: query
         in: query
@@ -171,21 +169,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LicensesMessage'
+      summary: Get licenses
+      x-summary-source: derived
+      operationId: getLicenses
+      x-operation-id-source: derived
 components:
   schemas:
-    Licenses:
+    License:
       required:
-      - items
-      - total-results
+      - URL
+      - work-count
       type: object
       properties:
-        total-results:
+        URL:
+          type: string
+        work-count:
           type: integer
           format: int64
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/License'
       additionalProperties: false
     LicensesMessage:
       required:
@@ -205,16 +205,18 @@ components:
         message:
           $ref: '#/components/schemas/Licenses'
       additionalProperties: false
-    License:
+    Licenses:
       required:
-      - URL
-      - work-count
+      - items
+      - total-results
       type: object
       properties:
-        URL:
-          type: string
-        work-count:
+        total-results:
           type: integer
           format: int64
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/License'
       additionalProperties: false
 x-original-swagger-version: '2.0'
