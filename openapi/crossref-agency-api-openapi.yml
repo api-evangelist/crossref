@@ -40,17 +40,16 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    DoiAgency:
+    Agency:
       required:
-      - DOI
-      - agency
+      - id
+      - label
       type: object
       properties:
-        DOI:
+        id:
           type: string
-          description: The DOI identifier associated with the work
-        agency:
-          $ref: '#/components/schemas/Agency'
+        label:
+          type: string
       additionalProperties: false
     AgencyMessage:
       required:
@@ -70,15 +69,16 @@ components:
         message:
           $ref: '#/components/schemas/DoiAgency'
       additionalProperties: false
-    Agency:
+    DoiAgency:
       required:
-      - id
-      - label
+      - DOI
+      - agency
       type: object
       properties:
-        id:
+        DOI:
           type: string
-        label:
-          type: string
+          description: The DOI identifier associated with the work
+        agency:
+          $ref: '#/components/schemas/Agency'
       additionalProperties: false
 x-original-swagger-version: '2.0'

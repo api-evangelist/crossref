@@ -200,80 +200,54 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    WorkAssertionExplanation:
+    Type:
       required:
-      - URL
+      - id
+      - label
       type: object
       properties:
-        URL:
+        id:
+          type: string
+        label:
           type: string
       additionalProperties: false
-    WorkStandardsBody:
+    VersionInfoDescription:
       type: object
       properties:
-        name:
-          type: string
-        acronym:
-          type: array
-          items:
-            type: string
-      additionalProperties: false
-    WorkLink:
-      required:
-      - URL
-      - content-type
-      - content-version
-      - intended-application
-      type: object
-      properties:
-        URL:
-          type: string
-        content-type:
-          type: string
-        content-version:
-          type: string
-        intended-application:
-          type: string
-      additionalProperties: false
-    WorkFreeToRead:
-      type: object
-      properties:
-        start-date:
-          $ref: '#/components/schemas/DateParts'
-        end-date:
-          $ref: '#/components/schemas/DateParts'
-      additionalProperties: false
-    DateParts:
-      required:
-      - date-parts
-      type: object
-      properties:
-        date-parts:
-          type: array
-          items:
-            type: array
-            items:
-              type: integer
-              format: int64
-      additionalProperties: false
-    VersionInfo:
-      required:
-      - version
-      type: object
-      properties:
-        version:
-          type: string
         language:
           type: string
-        version-description:
+        description:
+          type: string
+      additionalProperties: false
+    Resources:
+      required:
+      - primary
+      type: object
+      properties:
+        primary:
+          $ref: '#/components/schemas/PrimaryResource'
+        secondary:
           type: array
           items:
-            $ref: '#/components/schemas/VersionInfoDescription'
+            $ref: '#/components/schemas/SecondaryResource'
       additionalProperties: false
-    WorkRelation:
+    WorkUpdate:
+      required:
+      - DOI
+      - label
+      - type
+      - updated
       type: object
-      additionalProperties:
-        $ref: '#/components/schemas/WorkRelationObject'
+      properties:
+        label:
+          type: string
+        DOI:
+          type: string
+        type:
+          type: string
+        updated:
+          $ref: '#/components/schemas/Date'
+      additionalProperties: false
     Query:
       required:
       - search-terms
@@ -286,33 +260,94 @@ components:
         search-terms:
           type: string
       additionalProperties: false
-    WorkReview:
+    TypeMessage:
+      required:
+      - message
+      - message-type
+      - message-version
+      - status
       type: object
       properties:
-        type:
+        status:
           type: string
-        running-number:
+        message-type:
+          pattern: type
           type: string
-        revision-round:
+        message-version:
           type: string
-        stage:
+        message:
+          $ref: '#/components/schemas/Type'
+      additionalProperties: false
+    FunderIdentifier:
+      required:
+      - asserted-by
+      - id
+      - id-type
+      type: object
+      properties:
+        id:
           type: string
-        competing-interest-statement:
+        id-type:
           type: string
-        recommendation:
-          type: string
-        language:
+        asserted-by:
           type: string
       additionalProperties: false
-    WorkISSNType:
+    Types:
       required:
-      - type
-      - value
+      - items
+      - items-per-page
+      - query
+      - total-results
       type: object
       properties:
-        type:
+        items-per-page:
+          type: integer
+          format: int64
+        query:
+          $ref: '#/components/schemas/Query'
+        total-results:
+          type: integer
+          format: int64
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+      additionalProperties: false
+    WorkAssertion:
+      required:
+      - name
+      type: object
+      properties:
+        group:
+          $ref: '#/components/schemas/WorkAssertionGroup'
+        explanation:
+          $ref: '#/components/schemas/WorkAssertionExplanation'
+        name:
           type: string
         value:
+          type: string
+        URL:
+          type: string
+        order:
+          type: integer
+          format: int64
+      additionalProperties: false
+    WorkAssertionGroup:
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+      additionalProperties: false
+    WorkStandardsBody:
+      type: object
+      properties:
+        name:
+          type: string
+        acronym:
           type: array
           items:
             type: string
@@ -365,48 +400,7 @@ components:
         issn-type:
           type: string
       additionalProperties: false
-    WorkDomain:
-      required:
-      - domain
-      type: object
-      properties:
-        domain:
-          type: array
-          items:
-            type: string
-        crossmark-restriction:
-          type: boolean
-      additionalProperties: false
-    WorksMessage:
-      required:
-      - message
-      - message-type
-      - message-version
-      - status
-      type: object
-      properties:
-        status:
-          type: string
-        message-type:
-          pattern: work-list
-          type: string
-        message-version:
-          type: string
-        message:
-          $ref: '#/components/schemas/Works'
-      additionalProperties: false
-    Type:
-      required:
-      - id
-      - label
-      type: object
-      properties:
-        id:
-          type: string
-        label:
-          type: string
-      additionalProperties: false
-    Types:
+    Works:
       required:
       - items
       - items-per-page
@@ -422,112 +416,53 @@ components:
         total-results:
           type: integer
           format: int64
+        next-cursor:
+          type: string
+          description: Used to navigate to the next page of results when using cursor deep paging
         items:
           type: array
           items:
-            $ref: '#/components/schemas/Type'
+            $ref: '#/components/schemas/Work'
       additionalProperties: false
-    WorkClinicalTrial:
+    Author:
       required:
-      - clinical-trial-number
-      - registry
+      - affiliation
+      - sequence
       type: object
       properties:
-        clinical-trial-number:
+        ORCID:
           type: string
-        registry:
+        suffix:
           type: string
-        type:
+        given:
           type: string
-      additionalProperties: false
-    WorkLicense:
-      required:
-      - URL
-      - content-version
-      - delay-in-days
-      type: object
-      properties:
-        URL:
+        family:
           type: string
-        start:
-          $ref: '#/components/schemas/Date'
-        delay-in-days:
-          type: integer
-          format: int64
-        content-version:
-          type: string
-      additionalProperties: false
-    Affiliation:
-      required:
-      - name
-      type: object
-      properties:
-        name:
-          type: string
-      additionalProperties: false
-    WorkFunder:
-      type: object
-      properties:
-        name:
-          type: string
-        DOI:
-          type: string
-        doi-asserted-by:
-          type: string
-        award:
+        affiliation:
           type: array
           items:
-            type: string
-        id:
+            $ref: '#/components/schemas/Affiliation'
+        name:
+          type: string
+        authenticated-orcid:
+          type: boolean
+        prefix:
+          type: string
+        sequence:
+          type: string
+      additionalProperties: false
+    DateParts:
+      required:
+      - date-parts
+      type: object
+      properties:
+        date-parts:
           type: array
           items:
-            $ref: '#/components/schemas/FunderIdentifier'
-      additionalProperties: false
-    TypeMessage:
-      required:
-      - message
-      - message-type
-      - message-version
-      - status
-      type: object
-      properties:
-        status:
-          type: string
-        message-type:
-          pattern: type
-          type: string
-        message-version:
-          type: string
-        message:
-          $ref: '#/components/schemas/Type'
-      additionalProperties: false
-    FunderIdentifier:
-      required:
-      - asserted-by
-      - id
-      - id-type
-      type: object
-      properties:
-        id:
-          type: string
-        id-type:
-          type: string
-        asserted-by:
-          type: string
-      additionalProperties: false
-    WorkRelationObject:
-      required:
-      - asserted-by
-      - id
-      - id-type
-      type: object
-      properties:
-        id-type:
-          type: string
-        id:
-          type: string
-        asserted-by:
-          type: string
+            type: array
+            items:
+              type: integer
+              format: int64
       additionalProperties: false
     WorkInstitution:
       required:
@@ -548,6 +483,133 @@ components:
           type: array
           items:
             type: string
+      additionalProperties: false
+    WorkDomain:
+      required:
+      - domain
+      type: object
+      properties:
+        domain:
+          type: array
+          items:
+            type: string
+        crossmark-restriction:
+          type: boolean
+      additionalProperties: false
+    WorkClinicalTrial:
+      required:
+      - clinical-trial-number
+      - registry
+      type: object
+      properties:
+        clinical-trial-number:
+          type: string
+        registry:
+          type: string
+        type:
+          type: string
+      additionalProperties: false
+    TypesMessage:
+      required:
+      - message
+      - message-type
+      - message-version
+      - status
+      type: object
+      properties:
+        status:
+          type: string
+        message-type:
+          pattern: type-list
+          type: string
+        message-version:
+          type: string
+        message:
+          $ref: '#/components/schemas/Types'
+      additionalProperties: false
+    WorkRelation:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/WorkRelationObject'
+    WorkJournalIssue:
+      required:
+      - issue
+      type: object
+      properties:
+        issue:
+          type: string
+      additionalProperties: false
+    WorkReview:
+      type: object
+      properties:
+        type:
+          type: string
+        running-number:
+          type: string
+        revision-round:
+          type: string
+        stage:
+          type: string
+        competing-interest-statement:
+          type: string
+        recommendation:
+          type: string
+        language:
+          type: string
+      additionalProperties: false
+    WorkFreeToRead:
+      type: object
+      properties:
+        start-date:
+          $ref: '#/components/schemas/DateParts'
+        end-date:
+          $ref: '#/components/schemas/DateParts'
+      additionalProperties: false
+    WorkLicense:
+      required:
+      - URL
+      - content-version
+      - delay-in-days
+      type: object
+      properties:
+        URL:
+          type: string
+        start:
+          $ref: '#/components/schemas/Date'
+        delay-in-days:
+          type: integer
+          format: int64
+        content-version:
+          type: string
+      additionalProperties: false
+    Date:
+      required:
+      - date-parts
+      - date-time
+      - timestamp
+      type: object
+      properties:
+        date-parts:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+              format: int64
+        date-time:
+          type: string
+          format: date-time
+        timestamp:
+          type: integer
+          format: int64
+      additionalProperties: false
+    WorkAssertionExplanation:
+      required:
+      - URL
+      type: object
+      properties:
+        URL:
+          type: string
       additionalProperties: false
     Work:
       required:
@@ -770,6 +832,127 @@ components:
         article-number:
           type: string
       additionalProperties: false
+    WorkISSNType:
+      required:
+      - type
+      - value
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+    PrimaryResource:
+      required:
+      - URL
+      type: object
+      properties:
+        URL:
+          type: string
+      additionalProperties: false
+    VersionInfo:
+      required:
+      - version
+      type: object
+      properties:
+        version:
+          type: string
+        language:
+          type: string
+        version-description:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersionInfoDescription'
+      additionalProperties: false
+    Affiliation:
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+      additionalProperties: false
+    WorkLink:
+      required:
+      - URL
+      - content-type
+      - content-version
+      - intended-application
+      type: object
+      properties:
+        URL:
+          type: string
+        content-type:
+          type: string
+        content-version:
+          type: string
+        intended-application:
+          type: string
+      additionalProperties: false
+    SecondaryResource:
+      required:
+      - URL
+      - label
+      type: object
+      properties:
+        URL:
+          type: string
+        label:
+          type: string
+      additionalProperties: false
+    WorkFunder:
+      type: object
+      properties:
+        name:
+          type: string
+        DOI:
+          type: string
+        doi-asserted-by:
+          type: string
+        award:
+          type: array
+          items:
+            type: string
+        id:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunderIdentifier'
+      additionalProperties: false
+    WorkRelationObject:
+      required:
+      - asserted-by
+      - id
+      - id-type
+      type: object
+      properties:
+        id-type:
+          type: string
+        id:
+          type: string
+        asserted-by:
+          type: string
+      additionalProperties: false
+    WorksMessage:
+      required:
+      - message
+      - message-type
+      - message-version
+      - status
+      type: object
+      properties:
+        status:
+          type: string
+        message-type:
+          pattern: work-list
+          type: string
+        message-version:
+          type: string
+        message:
+          $ref: '#/components/schemas/Works'
+      additionalProperties: false
     DateAndVersion:
       required:
       - date-parts
@@ -792,189 +975,6 @@ components:
           type: integer
           format: int64
         version:
-          type: string
-      additionalProperties: false
-    WorkUpdate:
-      required:
-      - DOI
-      - label
-      - type
-      - updated
-      type: object
-      properties:
-        label:
-          type: string
-        DOI:
-          type: string
-        type:
-          type: string
-        updated:
-          $ref: '#/components/schemas/Date'
-      additionalProperties: false
-    TypesMessage:
-      required:
-      - message
-      - message-type
-      - message-version
-      - status
-      type: object
-      properties:
-        status:
-          type: string
-        message-type:
-          pattern: type-list
-          type: string
-        message-version:
-          type: string
-        message:
-          $ref: '#/components/schemas/Types'
-      additionalProperties: false
-    Works:
-      required:
-      - items
-      - items-per-page
-      - query
-      - total-results
-      type: object
-      properties:
-        items-per-page:
-          type: integer
-          format: int64
-        query:
-          $ref: '#/components/schemas/Query'
-        total-results:
-          type: integer
-          format: int64
-        next-cursor:
-          type: string
-          description: Used to navigate to the next page of results when using cursor deep paging
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Work'
-      additionalProperties: false
-    Resources:
-      required:
-      - primary
-      type: object
-      properties:
-        primary:
-          $ref: '#/components/schemas/PrimaryResource'
-        secondary:
-          type: array
-          items:
-            $ref: '#/components/schemas/SecondaryResource'
-      additionalProperties: false
-    PrimaryResource:
-      required:
-      - URL
-      type: object
-      properties:
-        URL:
-          type: string
-      additionalProperties: false
-    WorkAssertion:
-      required:
-      - name
-      type: object
-      properties:
-        group:
-          $ref: '#/components/schemas/WorkAssertionGroup'
-        explanation:
-          $ref: '#/components/schemas/WorkAssertionExplanation'
-        name:
-          type: string
-        value:
-          type: string
-        URL:
-          type: string
-        order:
-          type: integer
-          format: int64
-      additionalProperties: false
-    WorkAssertionGroup:
-      required:
-      - name
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-      additionalProperties: false
-    SecondaryResource:
-      required:
-      - URL
-      - label
-      type: object
-      properties:
-        URL:
-          type: string
-        label:
-          type: string
-      additionalProperties: false
-    Author:
-      required:
-      - affiliation
-      - sequence
-      type: object
-      properties:
-        ORCID:
-          type: string
-        suffix:
-          type: string
-        given:
-          type: string
-        family:
-          type: string
-        affiliation:
-          type: array
-          items:
-            $ref: '#/components/schemas/Affiliation'
-        name:
-          type: string
-        authenticated-orcid:
-          type: boolean
-        prefix:
-          type: string
-        sequence:
-          type: string
-      additionalProperties: false
-    Date:
-      required:
-      - date-parts
-      - date-time
-      - timestamp
-      type: object
-      properties:
-        date-parts:
-          type: array
-          items:
-            type: array
-            items:
-              type: integer
-              format: int64
-        date-time:
-          type: string
-          format: date-time
-        timestamp:
-          type: integer
-          format: int64
-      additionalProperties: false
-    VersionInfoDescription:
-      type: object
-      properties:
-        language:
-          type: string
-        description:
-          type: string
-      additionalProperties: false
-    WorkJournalIssue:
-      required:
-      - issue
-      type: object
-      properties:
-        issue:
           type: string
       additionalProperties: false
 x-original-swagger-version: '2.0'

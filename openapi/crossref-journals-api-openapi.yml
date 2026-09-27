@@ -281,83 +281,147 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    CoverageTypeObject:
-      required:
-      - all
-      - backfile
-      - current
+    CoverageObject:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Coverage'
+    VersionInfoDescription:
       type: object
       properties:
-        all:
-          $ref: '#/components/schemas/CoverageObject'
-        current:
-          $ref: '#/components/schemas/CoverageObject'
-        backfile:
-          $ref: '#/components/schemas/CoverageObject'
-      additionalProperties: false
-    WorkAssertionExplanation:
-      required:
-      - URL
-      type: object
-      properties:
-        URL:
+        language:
+          type: string
+        description:
           type: string
       additionalProperties: false
-    WorkStandardsBody:
+    Resources:
+      required:
+      - primary
+      type: object
+      properties:
+        primary:
+          $ref: '#/components/schemas/PrimaryResource'
+        secondary:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecondaryResource'
+      additionalProperties: false
+    WorkUpdate:
+      required:
+      - DOI
+      - label
+      - type
+      - updated
+      type: object
+      properties:
+        label:
+          type: string
+        DOI:
+          type: string
+        type:
+          type: string
+        updated:
+          $ref: '#/components/schemas/Date'
+      additionalProperties: false
+    Query:
+      required:
+      - search-terms
+      - start-index
+      type: object
+      properties:
+        start-index:
+          type: integer
+          format: int64
+        search-terms:
+          type: string
+      additionalProperties: false
+    FunderIdentifier:
+      required:
+      - asserted-by
+      - id
+      - id-type
+      type: object
+      properties:
+        id:
+          type: string
+        id-type:
+          type: string
+        asserted-by:
+          type: string
+      additionalProperties: false
+    Journal:
+      required:
+      - ISSN
+      - breakdowns
+      - counts
+      - coverage
+      - coverage-type
+      - flags
+      - issn-type
+      - last-status-check-time
+      - publisher
+      - subjects
+      - title
+      type: object
+      properties:
+        last-status-check-time:
+          type: integer
+          format: int64
+        counts:
+          $ref: '#/components/schemas/DoiCounts'
+        breakdowns:
+          $ref: '#/components/schemas/BreakdownsObject'
+        publisher:
+          type: string
+          description: The publisher of the journal
+        coverage:
+          $ref: '#/components/schemas/CoverageFull'
+        title:
+          type: string
+          description: The title of the journal
+        subjects:
+          type: array
+          items:
+            type: string
+        coverage-type:
+          $ref: '#/components/schemas/CoverageTypeObject'
+        flags:
+          $ref: '#/components/schemas/Flags'
+        ISSN:
+          type: array
+          description: The ISSN identifier associated with the journal
+          items:
+            type: string
+        issn-type:
+          $ref: '#/components/schemas/JournalIssnType'
+      additionalProperties: false
+    WorkAssertion:
+      required:
+      - name
+      type: object
+      properties:
+        group:
+          $ref: '#/components/schemas/WorkAssertionGroup'
+        explanation:
+          $ref: '#/components/schemas/WorkAssertionExplanation'
+        name:
+          type: string
+        value:
+          type: string
+        URL:
+          type: string
+        order:
+          type: integer
+          format: int64
+      additionalProperties: false
+    WorkAssertionGroup:
+      required:
+      - name
       type: object
       properties:
         name:
           type: string
-        acronym:
-          type: array
-          items:
-            type: string
-      additionalProperties: false
-    WorkLink:
-      required:
-      - URL
-      - content-type
-      - content-version
-      - intended-application
-      type: object
-      properties:
-        URL:
+        label:
           type: string
-        content-type:
-          type: string
-        content-version:
-          type: string
-        intended-application:
-          type: string
-      additionalProperties: false
-    Journals:
-      required:
-      - items
-      - items-per-page
-      - query
-      - total-results
-      type: object
-      properties:
-        items-per-page:
-          type: integer
-          format: int64
-        query:
-          $ref: '#/components/schemas/Query'
-        total-results:
-          type: integer
-          format: int64
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Journal'
-      additionalProperties: false
-    WorkFreeToRead:
-      type: object
-      properties:
-        start-date:
-          $ref: '#/components/schemas/DateParts'
-        end-date:
-          $ref: '#/components/schemas/DateParts'
       additionalProperties: false
     BreakdownsObject:
       required:
@@ -372,154 +436,15 @@ components:
               type: integer
               format: int64
       additionalProperties: false
-    DateParts:
-      required:
-      - date-parts
+    WorkStandardsBody:
       type: object
       properties:
-        date-parts:
-          type: array
-          items:
-            type: array
-            items:
-              type: integer
-              format: int64
-      additionalProperties: false
-    VersionInfo:
-      required:
-      - version
-      type: object
-      properties:
-        version:
+        name:
           type: string
-        language:
-          type: string
-        version-description:
-          type: array
-          items:
-            $ref: '#/components/schemas/VersionInfoDescription'
-      additionalProperties: false
-    WorkRelation:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/WorkRelationObject'
-    Query:
-      required:
-      - search-terms
-      - start-index
-      type: object
-      properties:
-        start-index:
-          type: integer
-          format: int64
-        search-terms:
-          type: string
-      additionalProperties: false
-    WorkReview:
-      type: object
-      properties:
-        type:
-          type: string
-        running-number:
-          type: string
-        revision-round:
-          type: string
-        stage:
-          type: string
-        competing-interest-statement:
-          type: string
-        recommendation:
-          type: string
-        language:
-          type: string
-      additionalProperties: false
-    WorkISSNType:
-      required:
-      - type
-      - value
-      type: object
-      properties:
-        type:
-          type: string
-        value:
+        acronym:
           type: array
           items:
             type: string
-      additionalProperties: false
-    JournalsMessage:
-      required:
-      - message
-      - message-type
-      - message-version
-      - status
-      type: object
-      properties:
-        status:
-          type: string
-        message-type:
-          pattern: journal-list
-          type: string
-        message-version:
-          type: string
-        message:
-          $ref: '#/components/schemas/Journals'
-      additionalProperties: false
-    Coverage:
-      required:
-      - abstracts
-      - affiliations
-      - award-numbers
-      - descriptions
-      - funders
-      - last-status-check-time
-      - licenses
-      - orcids
-      - references
-      - resource-links
-      - ror-ids
-      - similarity-checking
-      - update-policies
-      type: object
-      properties:
-        last-status-check-time:
-          type: integer
-          format: int64
-        affiliations:
-          type: number
-          format: double
-        abstracts:
-          type: number
-          format: double
-        orcids:
-          type: number
-          format: double
-        licenses:
-          type: number
-          format: double
-        references:
-          type: number
-          format: double
-        funders:
-          type: number
-          format: double
-        similarity-checking:
-          type: number
-          format: double
-        award-numbers:
-          type: number
-          format: double
-        ror-ids:
-          type: number
-          format: double
-        update-policies:
-          type: number
-          format: double
-        resource-links:
-          type: number
-          format: double
-        descriptions:
-          type: number
-          format: double
       additionalProperties: false
     Reference:
       type: object
@@ -569,17 +494,69 @@ components:
         issn-type:
           type: string
       additionalProperties: false
-    WorkDomain:
+    Works:
       required:
-      - domain
+      - items
+      - items-per-page
+      - query
+      - total-results
       type: object
       properties:
-        domain:
+        items-per-page:
+          type: integer
+          format: int64
+        query:
+          $ref: '#/components/schemas/Query'
+        total-results:
+          type: integer
+          format: int64
+        next-cursor:
+          type: string
+          description: Used to navigate to the next page of results when using cursor deep paging
+        items:
           type: array
           items:
-            type: string
-        crossmark-restriction:
+            $ref: '#/components/schemas/Work'
+      additionalProperties: false
+    Author:
+      required:
+      - affiliation
+      - sequence
+      type: object
+      properties:
+        ORCID:
+          type: string
+        suffix:
+          type: string
+        given:
+          type: string
+        family:
+          type: string
+        affiliation:
+          type: array
+          items:
+            $ref: '#/components/schemas/Affiliation'
+        name:
+          type: string
+        authenticated-orcid:
           type: boolean
+        prefix:
+          type: string
+        sequence:
+          type: string
+      additionalProperties: false
+    DateParts:
+      required:
+      - date-parts
+      type: object
+      properties:
+        date-parts:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+              format: int64
       additionalProperties: false
     CoverageFull:
       required:
@@ -682,23 +659,51 @@ components:
           type: number
           format: double
       additionalProperties: false
-    WorksMessage:
+    WorkInstitution:
       required:
-      - message
-      - message-type
-      - message-version
-      - status
+      - name
       type: object
       properties:
-        status:
+        name:
           type: string
-        message-type:
-          pattern: work-list
-          type: string
-        message-version:
-          type: string
-        message:
-          $ref: '#/components/schemas/Works'
+        place:
+          type: array
+          items:
+            type: string
+        department:
+          type: array
+          items:
+            type: string
+        acronym:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+    WorkDomain:
+      required:
+      - domain
+      type: object
+      properties:
+        domain:
+          type: array
+          items:
+            type: string
+        crossmark-restriction:
+          type: boolean
+      additionalProperties: false
+    CoverageTypeObject:
+      required:
+      - all
+      - backfile
+      - current
+      type: object
+      properties:
+        all:
+          $ref: '#/components/schemas/CoverageObject'
+        current:
+          $ref: '#/components/schemas/CoverageObject'
+        backfile:
+          $ref: '#/components/schemas/CoverageObject'
       additionalProperties: false
     WorkClinicalTrial:
       required:
@@ -712,6 +717,186 @@ components:
           type: string
         type:
           type: string
+      additionalProperties: false
+    WorkRelation:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/WorkRelationObject'
+    DoiCounts:
+      required:
+      - backfile-dois
+      - current-dois
+      - total-dois
+      type: object
+      properties:
+        total-dois:
+          type: integer
+          format: int64
+        current-dois:
+          type: integer
+          format: int64
+        backfile-dois:
+          type: integer
+          format: int64
+      additionalProperties: false
+    JournalsMessage:
+      required:
+      - message
+      - message-type
+      - message-version
+      - status
+      type: object
+      properties:
+        status:
+          type: string
+        message-type:
+          pattern: journal-list
+          type: string
+        message-version:
+          type: string
+        message:
+          $ref: '#/components/schemas/Journals'
+      additionalProperties: false
+    Journals:
+      required:
+      - items
+      - items-per-page
+      - query
+      - total-results
+      type: object
+      properties:
+        items-per-page:
+          type: integer
+          format: int64
+        query:
+          $ref: '#/components/schemas/Query'
+        total-results:
+          type: integer
+          format: int64
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Journal'
+      additionalProperties: false
+    JournalMessage:
+      required:
+      - message
+      - message-type
+      - message-version
+      - status
+      type: object
+      properties:
+        status:
+          type: string
+        message-type:
+          pattern: journal
+          type: string
+        message-version:
+          type: string
+        message:
+          $ref: '#/components/schemas/Journal'
+      additionalProperties: false
+    JournalIssnType:
+      required:
+      - type
+      - value
+      type: object
+      properties:
+        value:
+          type: string
+        type:
+          type: string
+      additionalProperties: false
+    WorkJournalIssue:
+      required:
+      - issue
+      type: object
+      properties:
+        issue:
+          type: string
+      additionalProperties: false
+    WorkReview:
+      type: object
+      properties:
+        type:
+          type: string
+        running-number:
+          type: string
+        revision-round:
+          type: string
+        stage:
+          type: string
+        competing-interest-statement:
+          type: string
+        recommendation:
+          type: string
+        language:
+          type: string
+      additionalProperties: false
+    WorkFreeToRead:
+      type: object
+      properties:
+        start-date:
+          $ref: '#/components/schemas/DateParts'
+        end-date:
+          $ref: '#/components/schemas/DateParts'
+      additionalProperties: false
+    Coverage:
+      required:
+      - abstracts
+      - affiliations
+      - award-numbers
+      - descriptions
+      - funders
+      - last-status-check-time
+      - licenses
+      - orcids
+      - references
+      - resource-links
+      - ror-ids
+      - similarity-checking
+      - update-policies
+      type: object
+      properties:
+        last-status-check-time:
+          type: integer
+          format: int64
+        affiliations:
+          type: number
+          format: double
+        abstracts:
+          type: number
+          format: double
+        orcids:
+          type: number
+          format: double
+        licenses:
+          type: number
+          format: double
+        references:
+          type: number
+          format: double
+        funders:
+          type: number
+          format: double
+        similarity-checking:
+          type: number
+          format: double
+        award-numbers:
+          type: number
+          format: double
+        ror-ids:
+          type: number
+          format: double
+        update-policies:
+          type: number
+          format: double
+        resource-links:
+          type: number
+          format: double
+        descriptions:
+          type: number
+          format: double
       additionalProperties: false
     Flags:
       required:
@@ -790,17 +975,6 @@ components:
         deposits-licenses-current:
           type: boolean
       additionalProperties: false
-    JournalIssnType:
-      required:
-      - type
-      - value
-      type: object
-      properties:
-        value:
-          type: string
-        type:
-          type: string
-      additionalProperties: false
     WorkLicense:
       required:
       - URL
@@ -818,97 +992,34 @@ components:
         content-version:
           type: string
       additionalProperties: false
-    Affiliation:
+    Date:
       required:
-      - name
+      - date-parts
+      - date-time
+      - timestamp
       type: object
       properties:
-        name:
-          type: string
-      additionalProperties: false
-    WorkFunder:
-      type: object
-      properties:
-        name:
-          type: string
-        DOI:
-          type: string
-        doi-asserted-by:
-          type: string
-        award:
+        date-parts:
           type: array
           items:
-            type: string
-        id:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunderIdentifier'
+            type: array
+            items:
+              type: integer
+              format: int64
+        date-time:
+          type: string
+          format: date-time
+        timestamp:
+          type: integer
+          format: int64
       additionalProperties: false
-    FunderIdentifier:
+    WorkAssertionExplanation:
       required:
-      - asserted-by
-      - id
-      - id-type
+      - URL
       type: object
       properties:
-        id:
+        URL:
           type: string
-        id-type:
-          type: string
-        asserted-by:
-          type: string
-      additionalProperties: false
-    WorkRelationObject:
-      required:
-      - asserted-by
-      - id
-      - id-type
-      type: object
-      properties:
-        id-type:
-          type: string
-        id:
-          type: string
-        asserted-by:
-          type: string
-      additionalProperties: false
-    WorkInstitution:
-      required:
-      - name
-      type: object
-      properties:
-        name:
-          type: string
-        place:
-          type: array
-          items:
-            type: string
-        department:
-          type: array
-          items:
-            type: string
-        acronym:
-          type: array
-          items:
-            type: string
-      additionalProperties: false
-    JournalMessage:
-      required:
-      - message
-      - message-type
-      - message-version
-      - status
-      type: object
-      properties:
-        status:
-          type: string
-        message-type:
-          pattern: journal
-          type: string
-        message-version:
-          type: string
-        message:
-          $ref: '#/components/schemas/Journal'
       additionalProperties: false
     Work:
       required:
@@ -1131,6 +1242,127 @@ components:
         article-number:
           type: string
       additionalProperties: false
+    WorkISSNType:
+      required:
+      - type
+      - value
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+    PrimaryResource:
+      required:
+      - URL
+      type: object
+      properties:
+        URL:
+          type: string
+      additionalProperties: false
+    VersionInfo:
+      required:
+      - version
+      type: object
+      properties:
+        version:
+          type: string
+        language:
+          type: string
+        version-description:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersionInfoDescription'
+      additionalProperties: false
+    Affiliation:
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+      additionalProperties: false
+    WorkLink:
+      required:
+      - URL
+      - content-type
+      - content-version
+      - intended-application
+      type: object
+      properties:
+        URL:
+          type: string
+        content-type:
+          type: string
+        content-version:
+          type: string
+        intended-application:
+          type: string
+      additionalProperties: false
+    SecondaryResource:
+      required:
+      - URL
+      - label
+      type: object
+      properties:
+        URL:
+          type: string
+        label:
+          type: string
+      additionalProperties: false
+    WorkFunder:
+      type: object
+      properties:
+        name:
+          type: string
+        DOI:
+          type: string
+        doi-asserted-by:
+          type: string
+        award:
+          type: array
+          items:
+            type: string
+        id:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunderIdentifier'
+      additionalProperties: false
+    WorkRelationObject:
+      required:
+      - asserted-by
+      - id
+      - id-type
+      type: object
+      properties:
+        id-type:
+          type: string
+        id:
+          type: string
+        asserted-by:
+          type: string
+      additionalProperties: false
+    WorksMessage:
+      required:
+      - message
+      - message-type
+      - message-version
+      - status
+      type: object
+      properties:
+        status:
+          type: string
+        message-type:
+          pattern: work-list
+          type: string
+        message-version:
+          type: string
+        message:
+          $ref: '#/components/schemas/Works'
+      additionalProperties: false
     DateAndVersion:
       required:
       - date-parts
@@ -1154,237 +1386,5 @@ components:
           format: int64
         version:
           type: string
-      additionalProperties: false
-    WorkUpdate:
-      required:
-      - DOI
-      - label
-      - type
-      - updated
-      type: object
-      properties:
-        label:
-          type: string
-        DOI:
-          type: string
-        type:
-          type: string
-        updated:
-          $ref: '#/components/schemas/Date'
-      additionalProperties: false
-    Works:
-      required:
-      - items
-      - items-per-page
-      - query
-      - total-results
-      type: object
-      properties:
-        items-per-page:
-          type: integer
-          format: int64
-        query:
-          $ref: '#/components/schemas/Query'
-        total-results:
-          type: integer
-          format: int64
-        next-cursor:
-          type: string
-          description: Used to navigate to the next page of results when using cursor deep paging
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Work'
-      additionalProperties: false
-    Resources:
-      required:
-      - primary
-      type: object
-      properties:
-        primary:
-          $ref: '#/components/schemas/PrimaryResource'
-        secondary:
-          type: array
-          items:
-            $ref: '#/components/schemas/SecondaryResource'
-      additionalProperties: false
-    PrimaryResource:
-      required:
-      - URL
-      type: object
-      properties:
-        URL:
-          type: string
-      additionalProperties: false
-    DoiCounts:
-      required:
-      - backfile-dois
-      - current-dois
-      - total-dois
-      type: object
-      properties:
-        total-dois:
-          type: integer
-          format: int64
-        current-dois:
-          type: integer
-          format: int64
-        backfile-dois:
-          type: integer
-          format: int64
-      additionalProperties: false
-    WorkAssertion:
-      required:
-      - name
-      type: object
-      properties:
-        group:
-          $ref: '#/components/schemas/WorkAssertionGroup'
-        explanation:
-          $ref: '#/components/schemas/WorkAssertionExplanation'
-        name:
-          type: string
-        value:
-          type: string
-        URL:
-          type: string
-        order:
-          type: integer
-          format: int64
-      additionalProperties: false
-    WorkAssertionGroup:
-      required:
-      - name
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-      additionalProperties: false
-    SecondaryResource:
-      required:
-      - URL
-      - label
-      type: object
-      properties:
-        URL:
-          type: string
-        label:
-          type: string
-      additionalProperties: false
-    CoverageObject:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/Coverage'
-    Author:
-      required:
-      - affiliation
-      - sequence
-      type: object
-      properties:
-        ORCID:
-          type: string
-        suffix:
-          type: string
-        given:
-          type: string
-        family:
-          type: string
-        affiliation:
-          type: array
-          items:
-            $ref: '#/components/schemas/Affiliation'
-        name:
-          type: string
-        authenticated-orcid:
-          type: boolean
-        prefix:
-          type: string
-        sequence:
-          type: string
-      additionalProperties: false
-    Date:
-      required:
-      - date-parts
-      - date-time
-      - timestamp
-      type: object
-      properties:
-        date-parts:
-          type: array
-          items:
-            type: array
-            items:
-              type: integer
-              format: int64
-        date-time:
-          type: string
-          format: date-time
-        timestamp:
-          type: integer
-          format: int64
-      additionalProperties: false
-    VersionInfoDescription:
-      type: object
-      properties:
-        language:
-          type: string
-        description:
-          type: string
-      additionalProperties: false
-    WorkJournalIssue:
-      required:
-      - issue
-      type: object
-      properties:
-        issue:
-          type: string
-      additionalProperties: false
-    Journal:
-      required:
-      - ISSN
-      - breakdowns
-      - counts
-      - coverage
-      - coverage-type
-      - flags
-      - issn-type
-      - last-status-check-time
-      - publisher
-      - subjects
-      - title
-      type: object
-      properties:
-        last-status-check-time:
-          type: integer
-          format: int64
-        counts:
-          $ref: '#/components/schemas/DoiCounts'
-        breakdowns:
-          $ref: '#/components/schemas/BreakdownsObject'
-        publisher:
-          type: string
-          description: The publisher of the journal
-        coverage:
-          $ref: '#/components/schemas/CoverageFull'
-        title:
-          type: string
-          description: The title of the journal
-        subjects:
-          type: array
-          items:
-            type: string
-        coverage-type:
-          $ref: '#/components/schemas/CoverageTypeObject'
-        flags:
-          $ref: '#/components/schemas/Flags'
-        ISSN:
-          type: array
-          description: The ISSN identifier associated with the journal
-          items:
-            type: string
-        issn-type:
-          $ref: '#/components/schemas/JournalIssnType'
       additionalProperties: false
 x-original-swagger-version: '2.0'
