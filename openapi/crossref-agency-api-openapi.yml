@@ -40,17 +40,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Agency:
-      required:
-      - id
-      - label
-      type: object
-      properties:
-        id:
-          type: string
-        label:
-          type: string
-      additionalProperties: false
     AgencyMessage:
       required:
       - message
@@ -80,5 +69,16 @@ components:
           description: The DOI identifier associated with the work
         agency:
           $ref: '#/components/schemas/Agency'
+      additionalProperties: false
+    Agency:
+      required:
+      - id
+      - label
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: string
       additionalProperties: false
 x-original-swagger-version: '2.0'

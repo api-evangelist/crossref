@@ -175,6 +175,18 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    License:
+      required:
+      - URL
+      - work-count
+      type: object
+      properties:
+        URL:
+          type: string
+        work-count:
+          type: integer
+          format: int64
+      additionalProperties: false
     LicensesMessage:
       required:
       - message
@@ -192,18 +204,6 @@ components:
           type: string
         message:
           $ref: '#/components/schemas/Licenses'
-      additionalProperties: false
-    License:
-      required:
-      - URL
-      - work-count
-      type: object
-      properties:
-        URL:
-          type: string
-        work-count:
-          type: integer
-          format: int64
       additionalProperties: false
     Licenses:
       required:
