@@ -269,6 +269,12 @@ apis:
   - type: JSONLD
     url: json-ld/crossref-context.jsonld
 common:
+  - type: Plans
+    url: plans/crossref-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/crossref-rate-limits.yml
+  - type: FinOps
+    url: finops/crossref-finops.yml
   - type: CapabilityMap
     url: capabilities/crossref-capability-edges.yml
     name: Crossref Business Capability Map
